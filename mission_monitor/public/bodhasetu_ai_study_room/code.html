@@ -78,6 +78,7 @@
       }
     </script>
 <style>
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             vertical-align: middle;
@@ -92,6 +93,66 @@
         .speaking-glow {
             box-shadow: 0 0 0 2px #8ed5ff, 0 0 30px 4px rgba(142, 213, 255, 0.4);
         }
+
+        /* FULLSCREEN AI MODE */
+/* STEP 1: Smooth zoom animation */
+#science-tutor-box.expanding {
+    position: fixed !important;
+    z-index: 9998 !important;
+
+    /* Start from current position */
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Slight zoom first */
+    transform: scale(1.1);
+}
+
+/* FINAL FULLSCREEN */
+#science-tutor-box.fullscreen {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    z-index: 9999 !important;
+    transform: scale(1);
+}
+
+/* End Session button — fullscreen only */
+#fullscreen-end-btn {
+    display: none;
+    position: fixed;
+    top: 28px;
+    right: 32px;
+    z-index: 10000;
+    background: rgba(255, 180, 171, 0.15);
+    color: #ffb4ab;
+    border: 1px solid rgba(255, 180, 171, 0.35);
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+}
+#fullscreen-end-btn:hover {
+    background: #ffb4ab;
+    color: #690005;
+}
+#fullscreen-end-btn.visible {
+    display: block;
+}
+
+/* Make widget fill screen */
+#science-tutor-box.fullscreen elevenlabs-convai {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
         /* ElevenLabs Widget Positioning */
         elevenlabs-convai {
             position: absolute !important;
@@ -162,9 +223,9 @@
 <div class="glass-panel px-4 py-2 rounded-full border border-white/5 text-xs font-label tracking-widest text-slate-300">
                     DURATION: 42:15
                 </div>
-<button class="bg-error/20 text-error hover:bg-error hover:text-on-error px-6 py-2 rounded-full font-bold text-sm transition-all">
-                    End Session
-                </button>
+<button id="end-session-btn" class="bg-error/20 text-error hover:bg-error hover:text-on-error px-6 py-2 rounded-full font-bold text-sm transition-all">
+  End Session
+</button>
 </div>
 </header>
 <!-- Dynamic Participant Layout -->
@@ -317,89 +378,103 @@
 </div>
 <p class="text-slate-500">© 2024 SelfSync AI. Designed for the Luminous Void.</p>
 </footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
+  const scienceTutorBox = document.getElementById('science-tutor-box');
   const endSessionBtn = document.getElementById('end-session-btn');
+  const fullscreenEndBtn = document.getElementById('fullscreen-end-btn');
 
-  endSessionBtn.addEventListener('click', () => {
-    if (confirm('Are you sure you want to end the session?')) {
-      alert('Session ended. Returning to Dashboard.');
-      window.location.href = '../bodhasetu_dashboard/code.html';
+  let isFullScreen = false;
+  let savedRect = null;
+
+  function exitFullscreen() {
+    if (window.ElevenLabsConvAI) window.ElevenLabsConvAI.stop();
+
+    // Animate back to original position
+    if (savedRect) {
+      scienceTutorBox.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+      scienceTutorBox.style.top = savedRect.top + 'px';
+      scienceTutorBox.style.left = savedRect.left + 'px';
+      scienceTutorBox.style.width = savedRect.width + 'px';
+      scienceTutorBox.style.height = savedRect.height + 'px';
+      scienceTutorBox.style.borderRadius = '0.75rem';
     }
-  });
 
-  // Control buttons
+    // After animation, remove fixed positioning and clean up
+    setTimeout(() => {
+      scienceTutorBox.classList.remove('fullscreen', 'expanding');
+      scienceTutorBox.style.cssText = ''; // reset all inline styles
+      isFullScreen = false;
+      savedRect = null;
+    }, 500);
+
+    fullscreenEndBtn.classList.remove('visible');
+  }
+
+  // START AI SESSION
+  if (scienceTutorBox) {
+    scienceTutorBox.addEventListener('click', () => {
+      if (isFullScreen) return;
+
+      savedRect = scienceTutorBox.getBoundingClientRect();
+
+      scienceTutorBox.style.position = 'fixed';
+      scienceTutorBox.style.top = savedRect.top + 'px';
+      scienceTutorBox.style.left = savedRect.left + 'px';
+      scienceTutorBox.style.width = savedRect.width + 'px';
+      scienceTutorBox.style.height = savedRect.height + 'px';
+      scienceTutorBox.style.zIndex = '9998';
+      scienceTutorBox.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+
+      // Force reflow so transition fires
+      scienceTutorBox.offsetHeight;
+
+      scienceTutorBox.style.top = '0';
+      scienceTutorBox.style.left = '0';
+      scienceTutorBox.style.width = '100vw';
+      scienceTutorBox.style.height = '100vh';
+      scienceTutorBox.style.borderRadius = '0';
+      scienceTutorBox.style.zIndex = '9999';
+
+      setTimeout(() => {
+        scienceTutorBox.classList.add('fullscreen');
+        isFullScreen = true;
+        fullscreenEndBtn.classList.add('visible');
+
+        if (window.ElevenLabsConvAI) {
+          window.ElevenLabsConvAI.setAgentId('agent_8301knatzwayfn9rfmh3bfhv9ffs');
+          window.ElevenLabsConvAI.start();
+        }
+      }, 500);
+    });
+  }
+
+  if (endSessionBtn) endSessionBtn.addEventListener('click', exitFullscreen);
+  if (fullscreenEndBtn) fullscreenEndBtn.addEventListener('click', exitFullscreen);
+
+  // SPEAKING GLOW
+  if (scienceTutorBox) {
+    const observer = new MutationObserver(() => {
+      const widget = scienceTutorBox.querySelector('elevenlabs-convai');
+      scienceTutorBox.classList.toggle('speaking', !!widget?.hasAttribute('data-speaking'));
+    });
+    observer.observe(scienceTutorBox, { attributes: true, subtree: true, attributeFilter: ['data-speaking'] });
+  }
+
+  // MIC BUTTON
   let micOn = true;
   document.getElementById('mic-btn').addEventListener('click', () => {
     micOn = !micOn;
     const icon = document.querySelector('#mic-btn span');
-    if (micOn) {
-      icon.setAttribute('data-icon', 'mic');
-      icon.style.fontVariationSettings = "'FILL' 1";
-      alert('Microphone enabled');
-    } else {
-      icon.setAttribute('data-icon', 'mic_off');
-      icon.style.fontVariationSettings = "'FILL' 0";
-      alert('Microphone muted');
-    }
+    icon.setAttribute('data-icon', micOn ? 'mic' : 'mic_off');
+    icon.style.fontVariationSettings = micOn ? "'FILL' 1" : "'FILL' 0";
   });
-
-  document.getElementById('video-btn').addEventListener('click', () => {
-    alert('Video toggle - Feature coming soon!');
-  });
-
-  document.getElementById('presentation-btn').addEventListener('click', () => {
-    alert('Presentation mode - Feature coming soon!');
-  });
-
-  document.getElementById('ai-augmentation-btn').addEventListener('click', () => {
-    alert('AI Augmentation activated - Feature coming soon!');
-  });
-
-  document.getElementById('chat-btn').addEventListener('click', () => {
-    alert('Chat panel opened - Feature coming soon!');
-  });
-
-  // ══════════════════════════════════════════════════════════════
-  // ELEVENLABS CONVAI WIDGET FOR SCIENCE TUTOR ONLY
-  // ══════════════════════════════════════════════════════════════
-
-  const scienceTutorBox = document.getElementById('science-tutor-box');
-  
-  if (scienceTutorBox) {
-    // Trigger widget when clicked
-    scienceTutorBox.addEventListener('click', () => {
-      console.log('🎯 Science tutor clicked - launching ElevenLabs agent');
-      
-      const agentId = 'agent_8301knatzwayfn9rfmh3bfhv9ffs';
-      
-      if (window.ElevenLabsConvAI) {
-        console.log('✅ ElevenLabs widget available');
-        window.ElevenLabsConvAI.setAgentId(agentId);
-        window.ElevenLabsConvAI.start();
-      } else {
-        console.error('❌ ElevenLabs widget not loaded yet');
-        alert('ElevenLabs widget is loading... please try again in a moment');
-      }
-    });
-
-    // Add speaking state glow effect
-    const observer = new MutationObserver(() => {
-      const convaiWidget = scienceTutorBox.querySelector('elevenlabs-convai');
-      if (convaiWidget && convaiWidget.hasAttribute('data-speaking')) {
-        scienceTutorBox.classList.add('speaking');
-      } else {
-        scienceTutorBox.classList.remove('speaking');
-      }
-    });
-
-    observer.observe(scienceTutorBox, {
-      attributes: true,
-      subtree: true,
-      attributeFilter: ['data-speaking']
-    });
-  }
 
 });
 </script>
+
+
+<button id="fullscreen-end-btn">⬛ End Session</button>
 </body></html>
