@@ -92,9 +92,25 @@
         .speaking-glow {
             box-shadow: 0 0 0 2px #8ed5ff, 0 0 30px 4px rgba(142, 213, 255, 0.4);
         }
+        /* ElevenLabs Widget Positioning */
+        elevenlabs-convai {
+            position: absolute !important;
+            bottom: 10px !important;
+            left: 10px !important;
+            right: 10px !important;
+            width: auto !important;
+            max-width: 100% !important;
+            z-index: 20 !important;
+        }
+        /* Speaking State Glow */
+        #science-tutor-box.speaking {
+            box-shadow: 0 0 20px #38bdf8;
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden">
+<!-- ElevenLabs ConvAI Widget Embed - Loaded Once -->
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 <!-- SideNavBar (Shared Component) -->
 <aside class="fixed left-0 top-0 bottom-0 hidden lg:flex flex-col p-6 z-40 bg-slate-950/60 backdrop-blur-3xl h-[983px] m-4 rounded-[3rem] w-64 shadow-2xl shadow-sky-950/20 font-manrope uppercase tracking-[0.05em] text-[10px]">
 <div class="text-xl font-bold text-sky-400 mb-8 lowercase tracking-normal">SelfSync</div>
@@ -153,84 +169,104 @@
 </header>
 <!-- Dynamic Participant Layout -->
 <div class="flex-grow grid grid-cols-12 grid-rows-6 gap-6 min-h-0">
-<!-- Active Focus: Science Tutor -->
-<section class="col-span-12 lg:col-span-8 row-span-6 relative overflow-hidden rounded-xl bg-surface-container-low group speaking-glow transition-all duration-700">
-<img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="abstract visualization of deep space nebula with complex geometric light patterns and vibrant cyan and violet hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU3-_TX5UP1H5cC288mHBf5qWSRqPsWbAKXLRErdr39AeZkIOfIyj7l-0ilLu5HyzNecP9eN58csl1T66DOCvmnez7-pNdnvgYntnMCaMxyrG9bTaI5J3gctn5gJdf4iJqW1B7altP34oeavEA-H-A8te306pCsDpkeMYgFAFVr0i3j0iHPaxRPl1p7vxjyWDZ9SY_F6n_rCum9--AyvEj32nv5YB3UIkSmouwr9tMEiEc5o6S4bbvU1CsHUqnVos6Hy3DBDWcx6uN"/>
-<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"></div>
-<!-- Tutor Overlay Info -->
-<div class="absolute bottom-6 left-6 flex items-end justify-between right-6">
-<div class="flex flex-col gap-3">
-<div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-2 rounded-full border border-white/10">
-<span class="w-2 h-2 rounded-full bg-sky-400"></span>
-<span class="font-headline font-bold text-white">Dr. Aris (Science)</span>
-<span class="font-label text-[10px] text-sky-400 bg-sky-400/10 px-2 rounded-full">EXPLAINING</span>
-</div>
-<p class="text-on-surface-variant max-w-md text-sm leading-relaxed backdrop-blur-sm p-2 rounded-lg">
-                            "The path integral formulation of quantum mechanics is a description of quantum theory that generalizes the action principle of classical mechanics..."
-                        </p>
-</div>
-<!-- Sound Wave Animation Simulation -->
-<div class="flex items-end gap-1 h-12">
-<div class="w-1.5 h-6 bg-sky-400/60 rounded-full animate-pulse"></div>
-<div class="w-1.5 h-10 bg-sky-400 rounded-full"></div>
-<div class="w-1.5 h-12 bg-sky-500 rounded-full"></div>
-<div class="w-1.5 h-8 bg-sky-400 rounded-full"></div>
-<div class="w-1.5 h-4 bg-sky-400/40 rounded-full"></div>
-</div>
-</div>
-<button id="fullscreen-btn-study" class="absolute top-6 right-6 p-3 rounded-full glass-panel border border-white/10 hover:bg-white/10 transition-all">
-<span class="material-symbols-outlined text-white" data-icon="fullscreen">fullscreen</span>
-</button>
-</section>
-<!-- Sidebar Participants -->
-<div class="col-span-12 lg:col-span-4 row-span-6 flex flex-col gap-4">
-<!-- Math Tutor Card -->
-<div class="flex-grow glass-panel rounded-xl border border-white/5 relative group overflow-hidden hover:border-sky-500/30 transition-all">
-<img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="blurred blackboard covered in complex mathematical formulas and physics diagrams with a warm cinematic glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPeX8zo6wd2xJUzPsQ4L-73elzPvkYpyK3QeOYtjOBUcuOh7YIHr8qWRnPPzPIXCqGmYUgqL7IRMcqZvMVAY1GYLhJeD3L6fLTqHDeM9-5GhvU9i_rh7ynTzjp5bLehCJVVDenc7u4YOazstFNRWiOYHEgKfBvFk2Fhhoywv9JJ3ipwpKp6w3yAftbc7OLYZdCIDd6D6G1c35tJeh_BHd7LjQkbcaIDobpRNuTnfCnaViiFl6T87tzaDV109dRc1KTXMjY2ET_0wBP"/>
-<div class="absolute inset-0 bg-gradient-to-tr from-slate-950/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-<div class="flex flex-col">
-<span class="text-xs font-label tracking-widest text-slate-400 uppercase">Math Tutor</span>
-<span class="font-bold text-white">Professor Thorne</span>
-</div>
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-slate-500 text-sm" data-icon="mic_off">mic_off</span>
-<span class="text-[10px] font-label text-slate-500">LISTENING</span>
-</div>
-</div>
-</div>
-<!-- Productivity Coach Card -->
-<div class="flex-grow glass-panel rounded-xl border border-white/5 relative group overflow-hidden hover:border-sky-500/30 transition-all">
-<img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="modern minimalist home office at night with ambient blue led lighting and clean geometric surfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHekv0XZ1i5dg1wueCR9IvD4psfj3rKeJZTL2s76ovWbF0aYKM4bJ0OutlMhw9r0CYNcl9nFmDq4wyEIvwgKQM3zE_KdG9B6KfAiKiPjzrhaU71jCACNXWmZI4eg5yemJA3Ypj-GASGOmzHV4s_pqEbkTbRU3sGkHKU_3UFtp4TwXs3XZ4uvQ1nNUIdZlFwrng9pJklUHZPSZLE739tMcyNquGvCZrruETgZ7JxpG800O_kGm0C1otb2LpHvwgvkRFB5HfLKlBkiMj"/>
-<div class="absolute inset-0 bg-gradient-to-tr from-slate-950/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-<div class="flex flex-col">
-<span class="text-xs font-label tracking-widest text-slate-400 uppercase">Efficiency</span>
-<span class="font-bold text-white">Coach Maya</span>
-</div>
-<div class="flex items-center gap-2">
-<div class="flex gap-0.5 h-3 items-center">
-<div class="w-1 h-1 bg-slate-500 rounded-full"></div>
-<div class="w-1 h-1 bg-slate-500 rounded-full"></div>
-<div class="w-1 h-1 bg-slate-500 rounded-full"></div>
-</div>
-<span class="text-[10px] font-label text-slate-500">LISTENING</span>
-</div>
-</div>
-</div>
-<!-- Motivation Coach Card -->
-<div class="flex-grow glass-panel rounded-xl border border-white/5 relative group overflow-hidden hover:border-sky-500/30 transition-all">
-<img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="digital representation of neural networks and glowing synpases in deep ocean blue and emerald green" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvtwXwZz-zaW_n5uoEwt1W_IwzDUqctHpb5lRYQtgqu0Ib2AOwsw3aALiijW-6wHERJ-MQsj5_v1WDNksbH-pxxprl9vLgbIH7ns6PG1gZdl_3u8wOO8VhtaD80BgptR3K1OvTky1WZuybIpkJXcf0v2B_eQZZQl1TC4hflShVA8HmH6TSRplTc2xoU9xxH_b1yTGTy9RcEuIDB_L2Z2Ms6DWd85p-qR2JxKg4J7rKV3jvIu9HTiH3eL28_1HLKeCAea_lpCOn6WF-"/>
-<div class="absolute inset-0 bg-gradient-to-tr from-slate-950/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-<div class="flex flex-col">
-<span class="text-xs font-label tracking-widest text-slate-400 uppercase">Motivation</span>
-<span class="font-bold text-white">Echo</span>
-</div>
-<span class="text-[10px] font-label text-slate-500 tracking-tighter">WAITING</span>
-</div>
-</div>
-</div>
+  <!-- Me Video -->
+  <section class="col-span-12 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group speaking-glow transition-all duration-700">
+    <img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="webcam view of the user in a study room" src="http://googleusercontent.com/profile/picture/4" />
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90"></div>
+    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
+      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span class="font-headline font-bold text-white">Me</span>
+        <span class="font-label text-[10px] text-emerald-200 bg-emerald-500/10 px-2 rounded-full">LIVE</span>
+      </div>
+      <p class="max-w-md text-sm leading-relaxed text-slate-300 backdrop-blur-sm p-2 rounded-lg bg-slate-950/30">
+        This is my active video feed. I’m connected and ready to learn.
+      </p>
+    </div>
+    <button id="fullscreen-btn-me" class="absolute top-6 right-6 p-3 rounded-full glass-panel border border-white/10 hover:bg-white/10 transition-all">
+      <span class="material-symbols-outlined text-white" data-icon="fullscreen">fullscreen</span>
+    </button>
+  </section>
+
+  <!-- Science Tutor -->
+  <section id="science-tutor-box" class="col-span-12 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-black group transition-all duration-700">
+
+    <!-- VIDEO BACKGROUND -->
+    <video autoplay muted loop
+      class="absolute inset-0 w-full h-full object-cover">
+      <source src="/videos/science_tutor.mp4" type="video/mp4" />
+    </video>
+
+    <!-- DARK OVERLAY -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- NAME BAR -->
+    <div class="absolute bottom-20 left-4 right-4 z-10">
+      <div class="flex items-center gap-2 bg-black/60 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+        <span class="text-white font-bold">Dr. Aris (Science)</span>
+        <span class="text-xs text-sky-300">EXPLAINING</span>
+      </div>
+    </div>
+
+    <!-- ELEVENLABS INSIDE TILE -->
+    <elevenlabs-convai
+      agent-id="agent_8301knatzwayfn9rfmh3bfhv9ffs">
+    </elevenlabs-convai>
+
+  </section>
+
+  <!-- Math Tutor -->
+  <section class="col-span-12 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
+    <img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="blurred blackboard covered in complex mathematical formulas and physics diagrams with a warm cinematic glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPeX8zo6wd2xJUzPsQ4L-73elzPvkYpyK3QeOYtjOBUcuOh7YIHr8qWRnPPzPIXCqGmYUgqL7IRMcqZvMVAY1GYLhJeD3L6fLTqHDeM9-5GhvU9i_rh7ynTzjp5bLehCJVVDenc7u4YOazstFNRWiOYHEgKfBvFk2Fhhoywv9JJ3ipwpKp6w3yAftbc7OLYZdCIDd6D6G1c35tJeh_BHd7LjQkbcaIDobpRNuTnfCnaViiFl6T87tzaDV109dRc1KTXMjY2ET_0wBP" />
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90"></div>
+    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
+      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+        <span class="font-headline font-bold text-white">Mr. Max (Math)</span>
+        <span class="font-label text-[10px] text-amber-300 bg-amber-500/10 px-2 rounded-full">SOLVING</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Tutor -->
+  <section class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
+    <img class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="ancient maps and historical artifacts lit by candlelight" src="http://googleusercontent.com/profile/picture/5" />
+    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950/90 via-transparent to-transparent"></div>
+    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
+      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py- rounded-full border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+        <span class="font-headline font-bold text-white">Professor Leo (History)</span>
+        <span class="font-label text-[10px] text-orange-300 bg-orange-500/10 px-2 rounded-full">TEACHING</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Geography Tutor -->
+  <section class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
+    <img class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="holographic earth globe with topographical data lines" src="http://googleusercontent.com/profile/picture/6" />
+    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950/90 via-transparent to-transparent"></div>
+    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
+      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-green-400"></span>
+        <span class="font-headline font-bold text-white">Geo Nova (Geography)</span>
+        <span class="font-label text-[10px] text-green-300 bg-green-500/10 px-2 rounded-full">EXPLORING</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hindi Tutor -->
+  <section class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
+    <img class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="traditional indian mandalas and script projected softly in warm lighting" src="http://googleusercontent.com/profile/picture/7" />
+    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950/90 via-transparent to-transparent"></div>
+    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
+      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-pink-400"></span>
+        <span class="font-headline font-bold text-white">Kai (Hindi)</span>
+        <span class="font-label text-[10px] text-pink-300 bg-pink-500/10 px-2 rounded-full">LEARNING</span>
+      </div>
+    </div>
+  </section>
 </div>
 <!-- Central Control Bar -->
 <section class="max-w-4xl mx-auto w-full glass-panel rounded-full p-4 flex items-center justify-between border border-white/10 shadow-2xl relative z-10">
@@ -324,13 +360,46 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('Chat panel opened - Feature coming soon!');
   });
 
-  document.getElementById('fullscreen-btn-study').addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  });
+  // ══════════════════════════════════════════════════════════════
+  // ELEVENLABS CONVAI WIDGET FOR SCIENCE TUTOR ONLY
+  // ══════════════════════════════════════════════════════════════
+
+  const scienceTutorBox = document.getElementById('science-tutor-box');
+  
+  if (scienceTutorBox) {
+    // Trigger widget when clicked
+    scienceTutorBox.addEventListener('click', () => {
+      console.log('🎯 Science tutor clicked - launching ElevenLabs agent');
+      
+      const agentId = 'agent_8301knatzwayfn9rfmh3bfhv9ffs';
+      
+      if (window.ElevenLabsConvAI) {
+        console.log('✅ ElevenLabs widget available');
+        window.ElevenLabsConvAI.setAgentId(agentId);
+        window.ElevenLabsConvAI.start();
+      } else {
+        console.error('❌ ElevenLabs widget not loaded yet');
+        alert('ElevenLabs widget is loading... please try again in a moment');
+      }
+    });
+
+    // Add speaking state glow effect
+    const observer = new MutationObserver(() => {
+      const convaiWidget = scienceTutorBox.querySelector('elevenlabs-convai');
+      if (convaiWidget && convaiWidget.hasAttribute('data-speaking')) {
+        scienceTutorBox.classList.add('speaking');
+      } else {
+        scienceTutorBox.classList.remove('speaking');
+      }
+    });
+
+    observer.observe(scienceTutorBox, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ['data-speaking']
+    });
+  }
+
 });
 </script>
 </body></html>

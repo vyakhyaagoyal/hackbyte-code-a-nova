@@ -1,9 +1,9 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import "./App.css";
 
 export default function App() {
 
-  const [page, setPage] = useState("/bodhasetu_landing_page/code.html");
+  const [page] = useState("/bodhasetu_landing_page/code.html");
 
   return (
     <div className="app">
