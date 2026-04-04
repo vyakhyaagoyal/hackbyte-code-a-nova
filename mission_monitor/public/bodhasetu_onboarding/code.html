@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BodhaSetu Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@300..700&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#bdc8d1",
+                    "on-secondary-fixed": "#21005e",
+                    "surface-variant": "#2d3449",
+                    "tertiary": "#4ee6aa",
+                    "tertiary-fixed": "#68fcbf",
+                    "primary-fixed-dim": "#7bd0ff",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-container": "#004e35",
+                    "on-secondary-fixed-variant": "#4f319c",
+                    "on-primary-fixed-variant": "#004c69",
+                    "surface-dim": "#0b1326",
+                    "background": "#0b1326",
+                    "secondary-fixed-dim": "#cebdff",
+                    "secondary": "#cebdff",
+                    "on-error": "#690005",
+                    "surface": "#0b1326",
+                    "on-tertiary-fixed": "#002114",
+                    "on-primary-fixed": "#001e2c",
+                    "inverse-surface": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "on-primary-container": "#004965",
+                    "secondary-fixed": "#e8ddff",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#003825",
+                    "on-primary": "#00354a",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary": "#381385",
+                    "surface-container-lowest": "#060e20",
+                    "primary-fixed": "#c4e7ff",
+                    "primary": "#8ed5ff",
+                    "secondary-container": "#4f319c",
+                    "error-container": "#93000a",
+                    "on-background": "#dae2fd",
+                    "surface-tint": "#7bd0ff",
+                    "surface-container-highest": "#2d3449",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "outline-variant": "#3e484f",
+                    "surface-container-high": "#222a3d",
+                    "outline": "#87929a",
+                    "tertiary-container": "#22c990",
+                    "on-surface": "#dae2fd",
+                    "inverse-primary": "#00668a",
+                    "primary-container": "#38bdf8",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "on-secondary-container": "#bea8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0b1326; color: #dae2fd; }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(40px) saturate(150%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-primary/30 flex flex-col overflow-x-hidden">
+<!-- Subtle Background Atmosphere -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-tertiary/5 blur-[100px] rounded-full"></div>
+</div>
+<!-- Navigation Suppressed for Onboarding as per Filter Rules -->
+<main class="relative z-10 flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
+<!-- Header / Logo Anchor -->
+<header class="mb-12 text-center">
+<h1 class="font-headline text-3xl font-black tracking-tight text-white mb-2">BodhaSetu</h1>
+<p class="font-label text-sky-400 tracking-[0.2em] text-[10px] uppercase">Luminous Void Intelligence</p>
+</header>
+<!-- Step Indicator -->
+<div class="w-full max-w-lg mb-12 flex justify-between items-center relative">
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant z-0 -translate-y-1/2" id="progress-bar"></div>
+<div id="step-circle-1" class="relative z-10 w-10 h-10 rounded-full bg-primary flex items-center justify-center border-4 border-surface-dim">
+<span class="text-on-primary font-label font-bold text-sm">1</span>
+</div>
+<div id="step-circle-2" class="relative z-10 w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border-4 border-surface-dim">
+<span class="text-on-surface-variant font-label font-bold text-sm">2</span>
+</div>
+<div id="step-circle-3" class="relative z-10 w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border-4 border-surface-dim">
+<span class="text-on-surface-variant font-label font-bold text-sm">3</span>
+</div>
+</div>
+<!-- Main Onboarding Card -->
+<div class="w-full max-w-4xl glass-panel p-8 lg:p-16 rounded-xl shadow-2xl relative overflow-hidden">
+<!-- Content Section 1: Identity -->
+<div id="content-step1" class="step-content">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div class="space-y-8">
+<div class="space-y-4">
+<h2 class="font-headline text-4xl lg:text-5xl font-bold tracking-tighter text-white">Let's craft your focus.</h2>
+<p class="font-body text-on-surface-variant leading-relaxed">Personalize your intelligence bridge to begin unearthing knowledge.</p>
+</div>
+<div class="space-y-6">
+<!-- Input Group -->
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Your Name</label>
+<input class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 text-white focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-surface-variant" placeholder="Enter your full name" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Field of Study</label>
+<input class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 text-white focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-surface-variant" placeholder="e.g. Quantum Physics, Fine Arts" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Study Goal</label>
+<select class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 text-white focus:ring-2 focus:ring-primary/50 appearance-none">
+<option>Exam Prep</option>
+<option>Conceptual Clarity</option>
+<option>Deep Research</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Daily Duration</label>
+<select class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 text-white focus:ring-2 focus:ring-primary/50 appearance-none">
+<option>30 Minutes</option>
+<option>1 Hour</option>
+<option>2+ Hours</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Personalization Visual Grid -->
+<div class="space-y-10">
+<div class="space-y-4">
+<h3 class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant">Choose your AI Tutor personality</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Option 1 -->
+<button data-personality="Friendly" class="flex flex-col items-center p-6 rounded-lg bg-surface-container-lowest hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">mood</span>
+<span class="font-body text-sm font-medium">Friendly</span>
+</button>
+<!-- Option 2 -->
+<button data-personality="Serious" class="flex flex-col items-center p-6 rounded-lg bg-surface-container-high border-2 border-primary/40 ring-4 ring-primary/10 transition-all">
+<span class="material-symbols-outlined text-3xl mb-3 text-primary">psychology</span>
+<span class="font-body text-sm font-medium">Serious</span>
+</button>
+<!-- Option 3 -->
+<button data-personality="Motivational" class="flex flex-col items-center p-6 rounded-lg bg-surface-container-lowest hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">bolt</span>
+<span class="font-body text-sm font-medium">Motivational</span>
+</button>
+<!-- Option 4 -->
+<button data-personality="Calm Teacher" class="flex flex-col items-center p-6 rounded-lg bg-surface-container-lowest hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">self_improvement</span>
+<span class="font-body text-sm font-medium">Calm Teacher</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant">Choose Study Theme</h3>
+<div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+<div class="flex-shrink-0 w-24 h-24 rounded-lg bg-gradient-to-br from-slate-900 to-sky-900 border-2 border-white/20 p-2 cursor-pointer hover:scale-105 transition-transform" data-theme="Void">
+<div class="w-full h-full rounded bg-white/5 flex items-center justify-center">
+<span class="text-[10px] font-label uppercase">Void</span>
+</div>
+</div>
+<div class="flex-shrink-0 w-24 h-24 rounded-lg bg-gradient-to-br from-emerald-950 to-teal-900 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all p-2 cursor-pointer" data-theme="Zenith">
+<div class="w-full h-full rounded bg-white/5 flex items-center justify-center">
+<span class="text-[10px] font-label uppercase">Zenith</span>
+</div>
+</div>
+<div class="flex-shrink-0 w-24 h-24 rounded-lg bg-gradient-to-br from-indigo-950 to-purple-900 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all p-2 cursor-pointer" data-theme="Ethereal">
+<div class="w-full h-full rounded bg-white/5 flex items-center justify-center">
+<span class="text-[10px] font-label uppercase">Ethereal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Section 2: Schedule -->
+<div id="content-step2" class="step-content hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div class="space-y-8">
+<div class="space-y-4">
+<h2 class="font-headline text-4xl lg:text-5xl font-bold tracking-tighter text-white">Set your rhythm.</h2>
+<p class="font-body text-on-surface-variant leading-relaxed">Choose when you study best to optimize your focus sessions.</p>
+</div>
+<div class="space-y-6">
+<h3 class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant">Preferred Study Times</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="time-slot flex items-center p-4 rounded-lg bg-surface-container-lowest hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all" data-time="morning">
+<span class="material-symbols-outlined text-2xl mr-3 text-primary">wb_sunny</span>
+<span class="font-body text-sm font-medium">Morning</span>
+</button>
+<button class="time-slot flex items-center p-4 rounded-lg bg-surface-container-lowest hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all" data-time="afternoon">
+<span class="material-symbols-outlined text-2xl mr-3 text-primary">wb_twilight</span>
+<span class="font-body text-sm font-medium">Afternoon</span>
+</button>
+<button class="time-slot flex items-center p-4 rounded-lg bg-surface-container-lowest hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all" data-time="evening">
+<span class="material-symbols-outlined text-2xl mr-3 text-primary">nightlight</span>
+<span class="font-body text-sm font-medium">Evening</span>
+</button>
+<button class="time-slot flex items-center p-4 rounded-lg bg-surface-container-lowest hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all" data-time="night">
+<span class="material-symbols-outlined text-2xl mr-3 text-primary">bedtime</span>
+<span class="font-body text-sm font-medium">Night</span>
+</button>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Enable Study Reminders</label>
+<input type="checkbox" id="reminders" class="rounded"/>
+</div>
+</div>
+</div>
+<div class="space-y-10">
+<!-- Visual placeholder -->
+<div class="h-64 bg-surface-container-low rounded-lg flex items-center justify-center">
+<span class="text-on-surface-variant">Study Schedule Visualization</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Section 3: Summary -->
+<div id="content-step3" class="step-content hidden">
+<div class="text-center space-y-8">
+<h2 class="font-headline text-4xl font-bold tracking-tighter text-white">You're all set!</h2>
+<p class="font-body text-on-surface-variant">Your personalized study environment is ready.</p>
+<div class="bg-surface-container-low p-6 rounded-lg max-w-2xl mx-auto">
+<p id="summary" class="text-left">Loading summary...</p>
+</div>
+</div>
+</div>
+<!-- Floating Footer Navigation -->
+<div class="mt-16 flex items-center justify-between">
+<button id="prev-btn" class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-white transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Previous
+                </button>
+<button id="next-btn" class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-10 py-4 rounded-full font-headline font-bold text-sm flex items-center gap-3 shadow-[0_10px_40px_-10px_rgba(56,189,248,0.5)] hover:shadow-[0_15px_50px_-5px_rgba(56,189,248,0.6)] transition-all transform hover:-translate-y-1 active:scale-95">
+                    Continue Journey
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="mt-12 max-w-sm w-full h-48 rounded-xl overflow-hidden opacity-30 grayscale mix-blend-overlay pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="abstract neural network visualization with ethereal blue particles and deep dark space background in cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF8qqcncvRcqWNaXAL1ReHMRUL_jz3oH5NgWsZvuzNskTdLkdRX4iyRk16Ex84Ogc8sdcD0zf15NYvaWY0vPTjdPsNUlGrm8HZTHbSaqsjdHjnQtb2yK_P34eqJUFkqX-LGyStxkwjgNnYH9pIKvJLVugXlg80n1Am98k60-gbxceQDaIK3ALPRgUboqX57Nj8_jJKoQaXXZO3eu9ByL1qQK1oGBFye6bSn-2p52zbYzu318DR43yhBs7VHRw-c9gjevvvmaO0OGHd"/>
+</div>
+</main>
+<!-- Footer -->
+<footer class="max-w-7xl mx-auto flex flex-col items-center gap-4 py-12 px-6">
+<p class="font-label text-[10px] text-slate-500 tracking-widest uppercase">© 2024 BodhaSetu AI. Designed for the Luminous Void.</p>
+<div class="flex gap-8">
+<a class="font-label text-[10px] text-slate-600 hover:text-white transition-colors tracking-widest uppercase" href="#">Privacy</a>
+<a class="font-label text-[10px] text-slate-600 hover:text-white transition-colors tracking-widest uppercase" href="#">Terms</a>
+<a class="font-label text-[10px] text-slate-600 hover:text-white transition-colors tracking-widest uppercase" href="#">API Status</a>
+</div>
+</footer>
+<script>
+let currentStep = 1;
+const totalSteps = 3;
+const userData = {};
+
+function showStep(step) {
+  // Hide all contents
+  document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+  // Show current
+  document.getElementById(`content-step${step}`).classList.remove('hidden');
+  // Update progress
+  const progress = document.getElementById('progress-bar');
+  progress.style.width = `${(step / totalSteps) * 100}%`;
+  // Update circles
+  for (let i = 1; i <= totalSteps; i++) {
+    const circle = document.getElementById(`step-circle-${i}`);
+    if (i <= step) {
+      circle.classList.remove('bg-surface-container-high');
+      circle.classList.add('bg-primary');
+      circle.querySelector('span').classList.remove('text-on-surface-variant');
+      circle.querySelector('span').classList.add('text-on-primary');
+    } else {
+      circle.classList.remove('bg-primary');
+      circle.classList.add('bg-surface-container-high');
+      circle.querySelector('span').classList.remove('text-on-primary');
+      circle.querySelector('span').classList.add('text-on-surface-variant');
+    }
+  }
+  // Update buttons
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  prevBtn.style.display = step > 1 ? 'flex' : 'none';
+  nextBtn.innerHTML = step === totalSteps ? 'Start Studying <span class="material-symbols-outlined">arrow_forward</span>' : 'Continue Journey <span class="material-symbols-outlined">arrow_forward</span>';
+  // Update summary if step 3
+  if (step === 3) {
+    const summary = `Name: ${userData.name || 'N/A'}, Field: ${userData.field || 'N/A'}, Goal: ${userData.goal || 'N/A'}, Duration: ${userData.duration || 'N/A'}, Personality: ${userData.personality || 'N/A'}, Theme: ${userData.theme || 'N/A'}, Times: ${userData.times ? userData.times.join(', ') : 'N/A'}, Reminders: ${userData.reminders ? 'Yes' : 'No'}`;
+    document.getElementById('summary').textContent = summary;
+  }
+}
+
+function nextStep() {
+  if (currentStep < totalSteps) {
+    // Collect data
+    collectData(currentStep);
+    currentStep++;
+    showStep(currentStep);
+  } else {
+    // Save and redirect
+    collectData(3);
+    localStorage.setItem('bodhasetu_user', JSON.stringify(userData));
+    window.location.href = '../bodhasetu_dashboard/code.html';
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+function collectData(step) {
+  if (step === 1) {
+    userData.name = document.querySelector('input[placeholder="Enter your full name"]').value;
+    userData.field = document.querySelector('input[placeholder="e.g. Quantum Physics, Fine Arts"]').value;
+    userData.goal = document.querySelector('select').value;
+    userData.duration = document.querySelectorAll('select')[1].value;
+    userData.personality = document.querySelector('.border-primary\\/40')?.dataset.personality || 'Serious';
+    userData.theme = document.querySelector('.border-white\\/20')?.dataset.theme || 'Void';
+  } else if (step === 2) {
+    userData.times = Array.from(document.querySelectorAll('.time-slot.selected')).map(el => el.dataset.time);
+    userData.reminders = document.getElementById('reminders').checked;
+  }
+  // For step3, already collected
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  showStep(1);
+  document.getElementById('next-btn').addEventListener('click', nextStep);
+  document.getElementById('prev-btn').addEventListener('click', prevStep);
+  // Add click for personality buttons
+  document.querySelectorAll('.flex.flex-col.items-center.p-6.rounded-lg').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.flex.flex-col.items-center.p-6.rounded-lg').forEach(b => b.classList.remove('border-primary\\/40', 'ring-4', 'ring-primary\\/10', 'bg-surface-container-high'));
+      btn.classList.add('border-primary\\/40', 'ring-4', 'ring-primary\\/10', 'bg-surface-container-high');
+    });
+  });
+  // For theme
+  document.querySelectorAll('.flex-shrink-0.w-24').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.flex-shrink-0.w-24').forEach(b => {
+        b.classList.remove('border-white\\/20', 'opacity-100', 'grayscale-0');
+        b.classList.add('opacity-60', 'grayscale');
+      });
+      btn.classList.add('border-white\\/20', 'opacity-100', 'grayscale-0');
+    });
+  });
+  // For time slots
+  document.querySelectorAll('.time-slot').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('selected');
+      btn.classList.toggle('bg-primary\\/10');
+      btn.classList.toggle('border-primary\\/30');
+    });
+  });
+});
+</script>
+</body></html>

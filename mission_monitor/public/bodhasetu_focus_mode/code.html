@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BodhaSetu - Study Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#bdc8d1",
+                    "on-secondary-fixed": "#21005e",
+                    "surface-variant": "#2d3449",
+                    "tertiary": "#4ee6aa",
+                    "tertiary-fixed": "#68fcbf",
+                    "primary-fixed-dim": "#7bd0ff",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-container": "#004e35",
+                    "on-secondary-fixed-variant": "#4f319c",
+                    "on-primary-fixed-variant": "#004c69",
+                    "surface-dim": "#0b1326",
+                    "background": "#0b1326",
+                    "secondary-fixed-dim": "#cebdff",
+                    "secondary": "#cebdff",
+                    "on-error": "#690005",
+                    "surface": "#0b1326",
+                    "on-tertiary-fixed": "#002114",
+                    "on-primary-fixed": "#001e2c",
+                    "inverse-surface": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "on-primary-container": "#004965",
+                    "secondary-fixed": "#e8ddff",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#003825",
+                    "on-primary": "#00354a",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary": "#381385",
+                    "surface-container-lowest": "#060e20",
+                    "primary-fixed": "#c4e7ff",
+                    "primary": "#8ed5ff",
+                    "secondary-container": "#4f319c",
+                    "error-container": "#93000a",
+                    "on-background": "#dae2fd",
+                    "surface-tint": "#7bd0ff",
+                    "surface-container-highest": "#2d3449",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "outline-variant": "#3e484f",
+                    "surface-container-high": "#222a3d",
+                    "outline": "#87929a",
+                    "tertiary-container": "#22c990",
+                    "on-surface": "#dae2fd",
+                    "inverse-primary": "#00668a",
+                    "primary-container": "#38bdf8",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "on-secondary-container": "#bea8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(40px) saturate(150%);
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary min-h-screen overflow-hidden flex">
+<!-- Sidebar Navigation (JSON: SideNavBar) -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col p-6 z-40 bg-slate-950/60 backdrop-blur-3xl h-[983px] m-4 rounded-[3rem] w-64 shadow-2xl shadow-sky-950/20">
+<div class="text-xl font-bold text-sky-400 mb-8 font-headline uppercase tracking-tight">BodhaSetu</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label text-[10px] uppercase tracking-[0.05em]">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-sky-500/20 text-sky-300 rounded-full px-6 py-3 border-l-4 border-sky-400 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label text-[10px] uppercase tracking-[0.05em]">Study Room</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="#">
+<span class="material-symbols-outlined">local_library</span>
+<span class="font-label text-[10px] uppercase tracking-[0.05em]">Library</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="#">
+<span class="material-symbols-outlined">center_focus_strong</span>
+<span class="font-label text-[10px] uppercase tracking-[0.05em]">Focus Mode</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full py-3 bg-primary text-on-primary-fixed rounded-full font-label text-[10px] uppercase tracking-widest font-bold shadow-lg shadow-primary/20">
+                Upgrade to Pro
+            </button>
+<div class="flex flex-col gap-1 pt-4 border-t border-slate-800">
+<a class="flex items-center gap-3 text-slate-500 px-6 py-2 hover:text-slate-200 transition-all font-label text-[10px] uppercase tracking-[0.05em]" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                </a>
+<a class="flex items-center gap-3 text-slate-500 px-6 py-2 hover:text-slate-200 transition-all font-label text-[10px] uppercase tracking-[0.05em]" href="#">
+<span class="material-symbols-outlined">help</span> Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-72 p-8 relative flex flex-col h-screen overflow-hidden">
+<!-- Top App Bar (JSON: TopNavBar style) -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-8 h-16 bg-slate-900/40 backdrop-blur-2xl rounded-full mb-8 shadow-[0_20px_100px_-10px_rgba(56,189,248,0.15)]">
+<div class="flex items-center gap-6">
+<div class="text-2xl font-black tracking-tight text-white font-headline">Study Room</div>
+<div class="h-4 w-px bg-slate-700"></div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#4ee6aa]"></span>
+<span class="font-label text-xs tracking-widest text-on-surface-variant">LIVE MONITORING ACTIVE</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-lowest px-4 py-2 rounded-full flex items-center gap-3">
+<span class="material-symbols-outlined text-sky-400">timer</span>
+<span class="font-label text-sm font-bold text-white">45:00</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all"><span class="material-symbols-outlined">dark_mode</span></button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</div>
+</header>
+<!-- Dynamic Study Layout -->
+<div class="flex-1 grid grid-cols-12 gap-8 relative">
+<!-- Left: Focus Tools -->
+<section class="col-span-3 flex flex-col gap-6">
+<div class="bg-surface-container-low p-6 rounded-xl border border-white/5 shadow-xl">
+<h3 class="font-label text-xs tracking-[0.1em] text-sky-400 mb-6 uppercase">Focus Session</h3>
+<div class="flex flex-col items-center gap-4 mb-8">
+<div class="relative w-40 h-40 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-slate-800" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="110" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span id="timer" class="text-3xl font-black text-white font-headline">25:00</span>
+<span class="text-[10px] font-label text-slate-500 uppercase">Pomodoro</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button id="pause-btn" class="px-6 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-bold font-label tracking-widest hover:bg-primary/20 transition-all">PAUSE</button>
+<button id="refresh-btn" class="p-2 bg-slate-800 text-slate-400 rounded-full hover:text-white transition-all"><span class="material-symbols-outlined">refresh</span></button>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-3 bg-surface-container-lowest rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-label text-slate-400">ENGAGEMENT</span>
+<span class="text-[10px] font-label text-tertiary">84%</span>
+</div>
+<div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[84%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-white/5 flex-1">
+<h3 class="font-label text-xs tracking-[0.1em] text-sky-400 mb-4 uppercase">Ambient Sounds</h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center p-4 bg-surface-container-high rounded-xl border border-primary/20 text-primary shadow-lg shadow-primary/5">
+<span class="material-symbols-outlined text-2xl mb-2">rainy</span>
+<span class="text-[10px] font-label uppercase">Rain</span>
+</button>
+<button class="flex flex-col items-center p-4 bg-slate-800/40 rounded-xl hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-2xl mb-2 text-slate-400">forest</span>
+<span class="text-[10px] font-label uppercase text-slate-500">Forest</span>
+</button>
+<button class="flex flex-col items-center p-4 bg-slate-800/40 rounded-xl hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-2xl mb-2 text-slate-400">waves</span>
+<span class="text-[10px] font-label uppercase text-slate-500">Waves</span>
+</button>
+<button class="flex flex-col items-center p-4 bg-slate-800/40 rounded-xl hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-2xl mb-2 text-slate-400">coffee</span>
+<span class="text-[10px] font-label uppercase text-slate-500">Cafe</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Center: Video Player -->
+<section class="col-span-6 flex flex-col">
+<div class="glass-panel rounded-xl overflow-hidden shadow-2xl relative border border-white/5 h-[665px]">
+<img class="w-full h-full object-cover opacity-80" data-alt="professional educational video showing a screen share of complex mathematics on a digital blackboard with cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAmz0dawCHD-CGZTezl_QwRgu-aUHt-bR9QBYRS3dend2ICQ3FOSXwP3-1tbP9FRBwcUMRNYIP0UY1RdDmElVBMGK5zFgnOKi4GB6h6wnfO14Ryv3QQTNeppyxT9O-1AHCLojXLJxJE-1SGqXvexYUexJNSZOpWo3b3PNqi51qfMKxAP1dQ_5-u4fi31kWogJ3OxU3Yo1EAyc2CEs2LN8frlcCptgh3yI-LBQ0dJ-nuPBugJ3u6l4qw61gT4R51TvA35H6Q33UN5Db"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-on-primary-fixed shadow-xl shadow-primary/30">
+<span class="material-symbols-outlined">pause</span>
+</button>
+<div>
+<h2 class="text-white font-bold text-lg leading-none mb-1">Advanced Neural Networks</h2>
+<p class="text-slate-400 text-xs">Module 4: Backpropagation &amp; Optimization</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label text-xs text-white">42:15 / 58:00</span>
+<span class="material-symbols-outlined text-white/50 hover:text-white cursor-pointer transition-colors">fullscreen</span>
+</div>
+</div>
+<!-- Notification Popup -->
+<div class="absolute top-8 left-1/2 -translate-x-1/2 w-80 glass-panel rounded-2xl p-4 border border-tertiary/20 flex items-start gap-4 shadow-2xl shadow-slate-950 animate-pulse">
+<div class="w-10 h-10 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<div class="flex-1">
+<p class="text-xs text-white font-semibold mb-1">Eye Fatigue Detected</p>
+<p class="text-[10px] text-on-surface-variant leading-relaxed">You haven't blinked much. Take a short eye break.</p>
+</div>
+<button class="text-slate-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="flex justify-between items-center py-6 px-2">
+<div class="flex gap-8">
+<div>
+<span class="block text-[10px] font-label text-slate-500 uppercase tracking-widest mb-1">Mood</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm">sentiment_satisfied</span>
+<span class="text-sm font-bold text-white">Focused</span>
+</div>
+</div>
+<div>
+<span class="block text-[10px] font-label text-slate-500 uppercase tracking-widest mb-1">Posture</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">accessibility_new</span>
+<span class="text-sm font-bold text-white">Correct</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-slate-800/40 px-4 py-2 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<span class="text-[10px] font-label text-slate-400 tracking-tight">DATA PROCESSED LOCALLY</span>
+</div>
+</div>
+</section>
+<!-- Right: AI Tutor & Monitoring -->
+<section class="col-span-3 flex flex-col gap-6">
+<!-- AI Assistant Mini Panel -->
+<div class="bg-surface-container-low rounded-xl border border-white/5 p-6 shadow-xl flex-1 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-label text-xs tracking-[0.1em] text-sky-400 uppercase">AI Assistant</h3>
+<span class="material-symbols-outlined text-slate-500 text-sm">expand_more</span>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex-shrink-0"></div>
+<div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none">
+<p class="text-[11px] text-white leading-relaxed">I noticed the teacher mentioned "Stochastic Gradient Descent". Would you like a quick summary?</p>
+</div>
+</div>
+<div class="flex gap-3 flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex-shrink-0"></div>
+<div class="bg-primary/20 p-3 rounded-2xl rounded-tr-none border border-primary/10">
+<p class="text-[11px] text-primary leading-relaxed">Yes, please. Explain it like I'm 5.</p>
+</div>
+</div>
+</div>
+<div class="mt-4 relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-full py-3 px-5 text-xs text-white focus:ring-1 focus:ring-primary placeholder:text-slate-600" placeholder="Ask AI..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-primary">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<!-- OpenCV Preview Bubble -->
+<div class="relative group">
+<div class="w-full aspect-video bg-slate-900 rounded-xl overflow-hidden border border-primary/30 relative shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="close-up of a student studying in a dimly lit room, glowing screen reflections on face, with digital tracking markers and wireframe overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOm10iNc48cqGp3mWXEI6B1ml4oh_jA1Yhdl5B_slR3HIX72W3gBZaa2Jg1hWW7KEtvzy8QaK5Lg4UmfjskKpJr1cF-Mse5TxqhhW0L1xldaqIyd_dD8ni6-XDqmqY6dAU-ooxFIN0aP64sfPw9L2UF-LAm8ouzfkeWR458hLCF9Ja8zgl1PjJRlbbda98yoa6szZM9NzYSWAm_N8xUW-hHsq104aqufATY510Wj04ZzZap-YfzmdiXLkX7VDDEZrhgIwuQ23NAESY"/>
+<div class="absolute inset-0 bg-primary/10"></div>
+<!-- Tracking Overlay -->
+<div class="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-tertiary"></div>
+<div class="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-tertiary"></div>
+<div class="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-tertiary"></div>
+<div class="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-tertiary"></div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[9px] font-label text-white uppercase tracking-widest">Active Tracking</span>
+</div>
+</div>
+<div class="mt-3 flex justify-between items-center px-2">
+<span class="text-[10px] font-label text-slate-500">Posture Monitoring</span>
+<span class="text-[10px] font-label text-tertiary">OPTIMAL</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer (JSON: Footer) -->
+<footer class="max-w-7xl mx-auto flex flex-col items-center gap-4 mt-12 bg-transparent w-full py-12">
+<p class="font-space-grotesk text-xs tracking-widest text-slate-500">© 2024 BodhaSetu AI. Designed for the Luminous Void.</p>
+<div class="flex gap-8">
+<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="#">Privacy</a>
+<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="#">Terms</a>
+<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="#">API Status</a>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body>
+<script>
+let timerInterval;
+let timeLeft = 25 * 60; // 25 minutes in seconds
+let isRunning = false;
+
+function updateTimer() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  document.getElementById('timer').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  // Update progress circle
+  const circle = document.querySelector('circle.text-primary');
+  const totalTime = 25 * 60;
+  const offset = 440 - (440 * timeLeft / totalTime);
+  circle.style.strokeDashoffset = offset;
+}
+
+function startTimer() {
+  if (!isRunning) {
+    isRunning = true;
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      updateTimer();
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        isRunning = false;
+        alert('Pomodoro session complete!');
+      }
+    }, 1000);
+  }
+}
+
+function pauseTimer() {
+  if (isRunning) {
+    clearInterval(timerInterval);
+    isRunning = false;
+    document.getElementById('pause-btn').textContent = 'RESUME';
+  } else {
+    startTimer();
+    document.getElementById('pause-btn').textContent = 'PAUSE';
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+  timeLeft = 25 * 60;
+  updateTimer();
+  document.getElementById('pause-btn').textContent = 'PAUSE';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateTimer();
+  document.getElementById('pause-btn').addEventListener('click', pauseTimer);
+  document.getElementById('refresh-btn').addEventListener('click', resetTimer);
+  // Auto start or something, but for now manual
+});
+</script>
+</html>

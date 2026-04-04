@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BodhaSetu | AI Study Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#bdc8d1",
+                    "on-secondary-fixed": "#21005e",
+                    "surface-variant": "#2d3449",
+                    "tertiary": "#4ee6aa",
+                    "tertiary-fixed": "#68fcbf",
+                    "primary-fixed-dim": "#7bd0ff",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-container": "#004e35",
+                    "on-secondary-fixed-variant": "#4f319c",
+                    "on-primary-fixed-variant": "#004c69",
+                    "surface-dim": "#0b1326",
+                    "background": "#0b1326",
+                    "secondary-fixed-dim": "#cebdff",
+                    "secondary": "#cebdff",
+                    "on-error": "#690005",
+                    "surface": "#0b1326",
+                    "on-tertiary-fixed": "#002114",
+                    "on-primary-fixed": "#001e2c",
+                    "inverse-surface": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "on-primary-container": "#004965",
+                    "secondary-fixed": "#e8ddff",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#003825",
+                    "on-primary": "#00354a",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary": "#381385",
+                    "surface-container-lowest": "#060e20",
+                    "primary-fixed": "#c4e7ff",
+                    "primary": "#8ed5ff",
+                    "secondary-container": "#4f319c",
+                    "error-container": "#93000a",
+                    "on-background": "#dae2fd",
+                    "surface-tint": "#7bd0ff",
+                    "surface-container-highest": "#2d3449",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "outline-variant": "#3e484f",
+                    "surface-container-high": "#222a3d",
+                    "outline": "#87929a",
+                    "tertiary-container": "#22c990",
+                    "on-surface": "#dae2fd",
+                    "inverse-primary": "#00668a",
+                    "primary-container": "#38bdf8",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "on-secondary-container": "#bea8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(45, 52, 73, 0.4);
+        backdrop-filter: blur(40px) saturate(150%);
+      }
+      .luminous-glow {
+        box-shadow: 0 0 60px 10px rgba(142, 213, 255, 0.15);
+      }
+      body {
+        background-color: #0b1326;
+        color: #dae2fd;
+        overflow-x: hidden;
+      }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Shared Component) -->
+<nav class="sticky top-0 z-50 flex justify-between items-center px-8 h-16 bg-slate-900/40 backdrop-blur-2xl rounded-full mt-4 mx-auto w-[95%] shadow-[0_20px_100px_-10px_rgba(56,189,248,0.15)]">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-black tracking-tight text-white font-headline">BodhaSetu</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-headline tracking-tighter">
+<a class="text-sky-300 font-bold border-b-2 border-sky-400 pb-1" href="#">Home</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Study Room</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Library</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Focus Mode</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-white/5 rounded-full px-4 py-1.5 border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-sky-400" data-icon="search">search</span>
+<span class="ml-2 text-xs text-slate-500 font-label">SEARCH KNOWLEDGE</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-slate-400 hover:text-sky-400 transition-all hover:scale-95 active:scale-90" data-icon="timer">timer</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-sky-400 transition-all hover:scale-95 active:scale-90" data-icon="account_circle">account_circle</button>
+</div>
+</div>
+</nav>
+<main class="relative">
+<!-- Hero Section: Luminous Void Experience -->
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-32 overflow-hidden px-6">
+<!-- Background Visual Elements -->
+<div class="absolute inset-0 z-0 pointer-events-none">
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-tertiary/10 blur-[100px] rounded-full"></div>
+</div>
+<!-- Floating 3D "Study Room" Atmosphere Container -->
+<div class="relative z-10 max-w-7xl mx-auto w-full text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-surface-container-highest/40 backdrop-blur-md border border-outline-variant/10 font-label text-[10px] tracking-widest text-primary uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                    NEURAL STUDY NETWORK ACTIVE
+                </div>
+<h1 class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter mb-6 bg-gradient-to-br from-white via-primary to-primary-container bg-clip-text text-transparent">
+                    AI Study Room that<br/>keeps you focused
+                </h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Learn with AI tutors. Stay productive. Take care of yourself. BodhaSetu unearths knowledge through atmospheric spatial intelligence.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="group relative px-10 py-5 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold tracking-tight shadow-[0_0_40px_-5px_rgba(56,189,248,0.4)] hover:scale-105 active:scale-95 transition-all">
+                        Start Studying
+                    </button>
+<button class="px-10 py-5 rounded-full bg-surface-variant/30 backdrop-blur-xl border border-outline-variant/20 text-white font-bold tracking-tight hover:bg-surface-variant/50 hover:scale-105 active:scale-95 transition-all">
+                        Try Demo
+                    </button>
+</div>
+</div>
+<!-- Decorative 3D Orbs (Simulated) -->
+<div class="absolute bottom-20 left-10 md:left-40 group">
+<div class="w-24 h-24 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 blur-xl opacity-30 group-hover:opacity-60 transition-opacity"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 glass-card rounded-full flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-sky-400 text-lg" data-icon="bolt">bolt</span>
+</div>
+</div>
+<div class="absolute top-40 right-10 md:right-40 group">
+<div class="w-32 h-32 rounded-full bg-gradient-to-tr from-tertiary to-emerald-400 blur-2xl opacity-20 group-hover:opacity-50 transition-opacity"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 glass-card rounded-full flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-tertiary text-xl" data-icon="psychology">psychology</span>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="max-w-7xl mx-auto px-6 py-32 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Main Feature: AI Tutors -->
+<div class="md:col-span-8 group relative overflow-hidden glass-card rounded-xl p-12 hover:bg-surface-variant/60 transition-all duration-500 border border-transparent hover:border-primary/20">
+<div class="flex flex-col h-full justify-between gap-12">
+<div>
+<span class="font-label text-tertiary tracking-[0.2em] text-xs uppercase mb-4 block">Intelligence</span>
+<h3 class="font-headline text-4xl font-bold mb-4">Adaptive AI Tutors</h3>
+<p class="text-on-surface-variant text-lg max-w-md leading-relaxed">Personalized learning paths that evolve as you understand complex concepts. No more getting stuck.</p>
+</div>
+<div class="relative w-full h-48 rounded-lg overflow-hidden">
+<img alt="AI Network" class="w-full h-full object-cover opacity-60 mix-blend-screen" data-alt="abstract visualization of neural network connections with glowing cyan lines and particles in deep dark space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHKRe6WQa5CVnNjt8dXC3vQ3lqUpIknuguD3MPPt6MWqbVBJu59GpfyIMO9qq8qiWQOlwrhmgrjRLQV-6rfN5y4BpH0-DgLmlRnszRG5gdlERCLy116jQckO6zKwd89OhZLrj1zQOM5cGdlO_qPDQjZek4xkfeRdRnxkTSKyogU4K9MAOPCTp330Cd69WV0IJY0H04DDu-zWBde6aONYOxG61K63MeAqZhRUGMSyXuOFISOs-HE4rNlGnjH-EzJBEgrH2Grf8qmkwH"/>
+</div>
+</div>
+</div>
+<!-- Self-help Monitoring -->
+<div class="md:col-span-4 group glass-card rounded-xl p-8 flex flex-col justify-between hover:translate-y-[-8px] transition-all">
+<div>
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="monitor_heart">monitor_heart</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3">Self-care Monitor</h3>
+<p class="text-on-surface-variant font-body">Real-time fatigue detection that suggests breaks and mindfulness to prevent burnout.</p>
+</div>
+<div class="mt-8 pt-8 border-t border-white/5">
+<span class="text-xs font-label text-slate-500 tracking-widest uppercase">Bio-Feedback Syncing</span>
+</div>
+</div>
+<!-- Focus Timer -->
+<div class="md:col-span-4 group glass-card rounded-xl p-8 flex flex-col justify-between hover:translate-y-[-8px] transition-all">
+<div>
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary" data-icon="center_focus_strong">center_focus_strong</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3">Spatial Focus Timer</h3>
+<p class="text-on-surface-variant font-body">Immersive audio environments and deep focus intervals tailored to your circadian rhythm.</p>
+</div>
+<div class="mt-8 pt-8 border-t border-white/5">
+<span class="text-xs font-label text-slate-500 tracking-widest uppercase">98% Retention Rate</span>
+</div>
+</div>
+<!-- Personal Learning & Analytics -->
+<div class="md:col-span-8 group glass-card rounded-xl p-12 hover:bg-surface-variant/60 transition-all border border-transparent hover:border-tertiary/20">
+<div class="flex flex-col md:flex-row gap-12">
+<div class="flex-1">
+<h3 class="font-headline text-3xl font-bold mb-4">Study Analytics</h3>
+<p class="text-on-surface-variant leading-relaxed">Visualize your knowledge unearthing. Track mastery levels across thousands of topics with our hexagonal neural map.</p>
+<button class="mt-8 flex items-center gap-2 text-primary font-bold group-hover:translate-x-2 transition-transform">
+                                View Demo Insights <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="flex-1 bg-surface-container-lowest/50 rounded-lg p-6 border border-outline-variant/10">
+<!-- Visual placeholder for analytics UI -->
+<div class="space-y-4">
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-1/2 rounded-full"></div>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-5/6 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Detail Section: The Luminous Environment -->
+<section class="py-32 bg-surface-container-low/30 relative">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="aspect-square rounded-xl overflow-hidden glass-card p-4 border border-white/5 transform -rotate-3 hover:rotate-0 transition-transform duration-700">
+<img alt="AI Environment" class="w-full h-full object-cover rounded-lg" data-alt="futuristic server room with glowing blue holographic interfaces and floating digital data cubes in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6nbWiu69-awTvQvgwDPcNjIdxcIBj_PMM9UcBQEJohhrIllyD_SMKJEPuibuq4QYug0IMqLgk0pD5PYqzsfDUaKPD_SEdjMd1iKUoMZ6tJ7kLGnoBRgiAl_4-GfHidqCVxFa83BFdVY23nJXMfuknQvaxFqJG42q-Ooc0fsjp3oqtFgHQzToiN75nYAYN_a4yUIcN1Gv35a_u0YAGGWbrI9RfGTn4nK15xcRhOrr2F7fkhKckVil53A85SotiOoypjNHqO8poWI8O"/>
+</div>
+<div class="absolute -bottom-10 -right-10 w-48 h-48 glass-card rounded-lg p-6 border border-white/10 shadow-2xl backdrop-blur-3xl hidden lg:block">
+<span class="text-[10px] font-label text-sky-400 tracking-tighter">ENVIRONMENT SYNC</span>
+<div class="mt-2 text-2xl font-headline font-bold">94%</div>
+<div class="text-[10px] text-slate-500 font-body mt-1">Light Optimized</div>
+</div>
+</div>
+<div>
+<h2 class="font-headline text-5xl font-black tracking-tighter mb-8 leading-tight">Spatial Computing for the Human Mind.</h2>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 glass-card rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="blur_on">blur_on</span>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2">Atmospheric Depth</h4>
+<p class="text-on-surface-variant font-body leading-relaxed">Our interface doesn't sit on your screen; it lives in a layered atmospheric environment that reduces cognitive load.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 glass-card rounded-full flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2">Generative Context</h4>
+<p class="text-on-surface-variant font-body leading-relaxed">The AI creates visual analogies and spatial nodes for complex theories, turning data into digestible architecture.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Final Section -->
+<section class="py-40 px-6 text-center overflow-hidden relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[400px] bg-primary/5 blur-[150px] rounded-[100%] rotate-12"></div>
+<div class="relative z-10 max-w-4xl mx-auto">
+<h2 class="font-headline text-5xl md:text-7xl font-black mb-10 tracking-tighter">Ready to enter the Luminous Void?</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<button class="w-full md:w-auto px-12 py-6 rounded-full bg-white text-slate-950 font-bold hover:scale-105 active:scale-95 transition-all shadow-xl">
+                        Start Your First Session
+                    </button>
+<button class="w-full md:w-auto px-12 py-6 rounded-full glass-card border border-white/10 text-white font-bold hover:bg-white/10 transition-all">
+                        Talk to an AI Tutor
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="max-w-7xl mx-auto flex flex-col items-center gap-4 mt-20 w-full py-12 bg-transparent">
+<div class="flex gap-8 mb-4">
+<a class="font-label text-xs tracking-widest text-slate-600 hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="font-label text-xs tracking-widest text-slate-600 hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Terms</a>
+<a class="font-label text-xs tracking-widest text-slate-600 hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">API Status</a>
+</div>
+<p class="font-label text-xs tracking-widest text-slate-500 opacity-80">© 2024 BodhaSetu AI. Designed for the Luminous Void.</p>
+</footer>
+<!-- SideNavBar (Shared Component - Hidden on mobile, mapped for desktop/study view context) -->
+<aside class="fixed left-0 top-0 bottom-0 hidden lg:flex flex-col p-6 z-40 bg-slate-950/60 backdrop-blur-3xl h-[983px] m-4 rounded-[3rem] w-64 shadow-2xl shadow-sky-950/20 translate-x-[-110%] hover:translate-x-0 transition-transform duration-500 ease-in-out group/sidebar">
+<!-- Sidebar Peek Handle -->
+<div class="absolute right-[-24px] top-1/2 -translate-y-1/2 w-6 h-20 bg-sky-500/20 backdrop-blur-md rounded-r-full flex items-center justify-center cursor-pointer group-hover/sidebar:opacity-0 transition-opacity">
+<span class="material-symbols-outlined text-sky-400 text-sm" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="mb-8">
+<div class="text-xl font-bold text-sky-400 mb-2 font-headline">BodhaSetu</div>
+<div class="text-[10px] font-label uppercase tracking-widest text-slate-500">AI Study Intelligence</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="bg-sky-500/20 text-sky-300 rounded-full px-6 py-3 border-l-4 border-sky-400 font-label text-[10px] tracking-[0.05em] flex items-center gap-3 translate-x-1 duration-200" href="../bodhasetu_dashboard/code.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all font-label text-[10px] tracking-[0.05em] flex items-center gap-3" href="../bodhasetu_ai_study_room/code.html">
+<span class="material-symbols-outlined" data-icon="school">school</span> Study Room
+            </a>
+<a class="text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all font-label text-[10px] tracking-[0.05em] flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="local_library">local_library</span> Library
+            </a>
+<a class="text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all font-label text-[10px] tracking-[0.05em] flex items-center gap-3" href="../bodhasetu_focus_mode/code.html">
+<span class="material-symbols-outlined" data-icon="center_focus_strong">center_focus_strong</span> Focus Mode
+            </a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full py-3 rounded-full bg-gradient-to-r from-sky-500/10 to-sky-500/5 border border-sky-500/30 text-sky-300 font-label text-[10px] tracking-widest hover:bg-sky-500/20 transition-all">
+                Upgrade to Pro
+            </button>
+<div class="flex flex-col gap-2 pt-4 border-t border-white/5">
+<a class="text-slate-500 px-4 py-2 hover:text-slate-200 flex items-center gap-2 font-label text-[10px] tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span> Settings
+                </a>
+<a class="text-slate-500 px-4 py-2 hover:text-slate-200 flex items-center gap-2 font-label text-[10px] tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span> Support
+                </a>
+</div>
+</div>
+</aside>
+</body></html>
