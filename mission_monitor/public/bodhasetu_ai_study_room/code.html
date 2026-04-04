@@ -217,7 +217,27 @@
 </div>
 </aside>
 <!-- Main Study Interface -->
-<main class="lg:ml-72 p-6 lg:p-8 pt-6 h-[calc(100vh-80px)] flex flex-col gap-6">
+ <div id="start-screen"
+class="fixed inset-0 flex items-center justify-center bg-[#0b1326] z-50">
+
+<div class="text-center">
+
+<h1 class="text-4xl font-bold text-white mb-6">
+AI Study Room
+</h1>
+
+<button
+id="start-session-btn"
+class="px-8 py-4 bg-sky-500 hover:bg-sky-400 text-black font-bold rounded-xl text-lg transition">
+
+Start Session
+
+</button>
+
+</div>
+
+</div>
+<main id="study-ui" class="hidden lg:ml-72 p-6 lg:p-8 pt-6 h-[calc(100vh-80px)] flex flex-col gap-6">
 <!-- Header / Status Bar -->
 <header class="flex justify-between items-center px-4">
 <div>
@@ -240,7 +260,7 @@
 <div class="flex-grow grid grid-cols-12 grid-rows-6 gap-6 min-h-0">
   <!-- Me Video -->
   <section class="col-span-12 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group speaking-glow transition-all duration-700">
-    <img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="webcam view of the user in a study room" src="http://googleusercontent.com/profile/picture/4" />
+    <img id="user-camera" class="absolute inset-0 w-full h-full object-cover" data-alt="webcam view of the user in a study room" />
     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90"></div>
     <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
       <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
@@ -248,9 +268,9 @@
         <span class="font-headline font-bold text-white">Me</span>
         <span class="font-label text-[10px] text-emerald-200 bg-emerald-500/10 px-2 rounded-full">LIVE</span>
       </div>
-      <p class="max-w-md text-sm leading-relaxed text-slate-300 backdrop-blur-sm p-2 rounded-lg bg-slate-950/30">
+      <!-- <p class="max-w-md text-sm leading-relaxed text-slate-300 backdrop-blur-sm p-2 rounded-lg bg-slate-950/30">
         This is my active video feed. I’m connected and ready to learn.
-      </p>
+      </p> -->
     </div>
     <button id="fullscreen-btn-me" class="absolute top-6 right-6 p-3 rounded-full glass-panel border border-white/10 hover:bg-white/10 transition-all">
       <span class="material-symbols-outlined text-white" data-icon="fullscreen">fullscreen</span>
@@ -395,119 +415,111 @@
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
 
-  const scienceTutorBox = document.getElementById('science-tutor-box');
-  const endSessionBtn = document.getElementById('end-session-btn');
-  const fullscreenEndBtn = document.getElementById('fullscreen-end-btn');
+document.addEventListener("DOMContentLoaded", () => {
 
-  let isFullScreen = false;
-  let savedRect = null;
+const startBtn =
+document.getElementById("start-session-btn")
 
-  function exitFullscreen() {
-    if (window.ElevenLabsConvAI) window.ElevenLabsConvAI.stop();
+const startScreen =
+document.getElementById("start-screen")
 
-    const idleVideo = document.getElementById('idle-video');
-    const talkingVideo = document.getElementById('talking-video');
+const studyUI =
+document.getElementById("study-ui")
 
-    // Switch back to idle video
-    talkingVideo.classList.add('opacity-0');
-    idleVideo.classList.remove('opacity-0');
+const cameraFeed =
+document.getElementById("user-camera")
 
-    // Animate back to original position
-    if (savedRect) {
-      scienceTutorBox.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
-      scienceTutorBox.style.top = savedRect.top + 'px';
-      scienceTutorBox.style.left = savedRect.left + 'px';
-      scienceTutorBox.style.width = savedRect.width + 'px';
-      scienceTutorBox.style.height = savedRect.height + 'px';
-      scienceTutorBox.style.borderRadius = '0.75rem';
-    }
+const endBtn =
+document.getElementById("end-session-btn")
 
-    // After animation, remove fixed positioning and clean up
-    setTimeout(() => {
-      scienceTutorBox.classList.remove('fullscreen', 'expanding');
-      scienceTutorBox.style.cssText = ''; // reset all inline styles
-      isFullScreen = false;
-      savedRect = null;
-    }, 500);
 
-    fullscreenEndBtn.classList.remove('visible');
-  }
 
-  // START AI SESSION
-  if (scienceTutorBox) {
-    scienceTutorBox.addEventListener('click', () => {
-      if (isFullScreen) return;
+/* START SESSION */
 
-      const idleVideo = document.getElementById('idle-video');
-      const talkingVideo = document.getElementById('talking-video');
+startBtn.addEventListener("click", () => {
 
-      savedRect = scienceTutorBox.getBoundingClientRect();
+startBtn.innerText = "Starting..."
 
-      scienceTutorBox.style.position = 'fixed';
-      scienceTutorBox.style.top = savedRect.top + 'px';
-      scienceTutorBox.style.left = savedRect.left + 'px';
-      scienceTutorBox.style.width = savedRect.width + 'px';
-      scienceTutorBox.style.height = savedRect.height + 'px';
-      scienceTutorBox.style.zIndex = '9998';
-      scienceTutorBox.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+startScreen.style.display = "none"
 
-      // STEP 1: Start talking video early (no flicker)
-      setTimeout(() => {
-        talkingVideo.currentTime = 0;
-        talkingVideo.play();
+studyUI.classList.remove("hidden")
 
-        // STEP 2: Crossfade videos
-        idleVideo.classList.add('opacity-0');
-        talkingVideo.classList.remove('opacity-0');
-      }, 120); // Human reaction time delay
+/* start camera stream */
 
-      // Force reflow so transition fires
-      scienceTutorBox.offsetHeight;
+cameraFeed.src =
+"http://localhost:5000/video-feed"
 
-      scienceTutorBox.style.top = '0';
-      scienceTutorBox.style.left = '0';
-      scienceTutorBox.style.width = '100vw';
-      scienceTutorBox.style.height = '100vh';
-      scienceTutorBox.style.borderRadius = '0';
-      scienceTutorBox.style.zIndex = '9999';
+})
 
-      setTimeout(() => {
-        scienceTutorBox.classList.add('fullscreen');
-        isFullScreen = true;
-        fullscreenEndBtn.classList.add('visible');
 
-        if (window.ElevenLabsConvAI) {
-          window.ElevenLabsConvAI.setAgentId('agent_8301knatzwayfn9rfmh3bfhv9ffs');
-          window.ElevenLabsConvAI.start();
-        }
-      }, 500);
-    });
-  }
 
-  if (endSessionBtn) endSessionBtn.addEventListener('click', exitFullscreen);
-  if (fullscreenEndBtn) fullscreenEndBtn.addEventListener('click', exitFullscreen);
+/* STOP SESSION */
 
-  // SPEAKING GLOW
-  if (scienceTutorBox) {
-    const observer = new MutationObserver(() => {
-      const widget = scienceTutorBox.querySelector('elevenlabs-convai');
-      scienceTutorBox.classList.toggle('speaking', !!widget?.hasAttribute('data-speaking'));
-    });
-    observer.observe(scienceTutorBox, { attributes: true, subtree: true, attributeFilter: ['data-speaking'] });
-  }
+endBtn.addEventListener("click", () => {
 
-  // MIC BUTTON
-  let micOn = true;
-  document.getElementById('mic-btn').addEventListener('click', () => {
-    micOn = !micOn;
-    const icon = document.querySelector('#mic-btn span');
-    icon.setAttribute('data-icon', micOn ? 'mic' : 'mic_off');
-    icon.style.fontVariationSettings = micOn ? "'FILL' 1" : "'FILL' 0";
-  });
+fetch("http://localhost:5000/stop-session")
 
-});
+cameraFeed.src = ""
+
+})
+
+
+
+/* ElevenLabs AI fullscreen logic */
+
+const scienceTutorBox =
+document.getElementById("science-tutor-box")
+
+const fullscreenEndBtn =
+document.getElementById("fullscreen-end-btn")
+
+let isFullScreen = false
+let savedRect = null
+
+
+function exitFullscreen(){
+
+if(window.ElevenLabsConvAI)
+window.ElevenLabsConvAI.stop()
+
+scienceTutorBox.classList.remove("fullscreen")
+
+fullscreenEndBtn.classList.remove("visible")
+
+isFullScreen = false
+
+}
+
+
+scienceTutorBox.addEventListener("click", () => {
+
+if(isFullScreen) return
+
+savedRect =
+scienceTutorBox.getBoundingClientRect()
+
+scienceTutorBox.classList.add("fullscreen")
+
+isFullScreen = true
+
+fullscreenEndBtn.classList.add("visible")
+
+if(window.ElevenLabsConvAI){
+
+window.ElevenLabsConvAI.start()
+
+}
+
+})
+
+
+fullscreenEndBtn
+.addEventListener("click", exitFullscreen)
+
+
+})
+
 </script>
 
 
