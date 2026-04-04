@@ -105,6 +105,14 @@
 
     /* Slight zoom first */
     transform: scale(1.1);
+    
+    /* Brightness boost for cinematic effect */
+    filter: brightness(1.1);
+}
+
+#science-tutor-box.expanding video {
+    transform: scale(1.1);
+    transition: transform 0.6s ease;
 }
 
 /* FINAL FULLSCREEN */
@@ -253,9 +261,16 @@
   <section id="science-tutor-box" class="col-span-12 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-black group transition-all duration-700">
 
     <!-- VIDEO BACKGROUND -->
-    <video autoplay muted loop
-      class="absolute inset-0 w-full h-full object-cover">
+    <!-- IDLE VIDEO (profile/side view) -->
+    <video id="idle-video" autoplay muted loop
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500">
       <source src="/videos/science_tutor.mp4" type="video/mp4" />
+    </video>
+
+    <!-- TALKING VIDEO (front-facing) -->
+    <video id="talking-video" muted loop
+      class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500">
+      <source src="/videos/science_tutor_frontface.mp4" type="video/mp4" />
     </video>
 
     <!-- DARK OVERLAY -->
@@ -392,6 +407,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function exitFullscreen() {
     if (window.ElevenLabsConvAI) window.ElevenLabsConvAI.stop();
 
+    const idleVideo = document.getElementById('idle-video');
+    const talkingVideo = document.getElementById('talking-video');
+
+    // Switch back to idle video
+    talkingVideo.classList.add('opacity-0');
+    idleVideo.classList.remove('opacity-0');
+
     // Animate back to original position
     if (savedRect) {
       scienceTutorBox.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
@@ -418,6 +440,9 @@ document.addEventListener('DOMContentLoaded', () => {
     scienceTutorBox.addEventListener('click', () => {
       if (isFullScreen) return;
 
+      const idleVideo = document.getElementById('idle-video');
+      const talkingVideo = document.getElementById('talking-video');
+
       savedRect = scienceTutorBox.getBoundingClientRect();
 
       scienceTutorBox.style.position = 'fixed';
@@ -427,6 +452,16 @@ document.addEventListener('DOMContentLoaded', () => {
       scienceTutorBox.style.height = savedRect.height + 'px';
       scienceTutorBox.style.zIndex = '9998';
       scienceTutorBox.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+
+      // STEP 1: Start talking video early (no flicker)
+      setTimeout(() => {
+        talkingVideo.currentTime = 0;
+        talkingVideo.play();
+
+        // STEP 2: Crossfade videos
+        idleVideo.classList.add('opacity-0');
+        talkingVideo.classList.remove('opacity-0');
+      }, 120); // Human reaction time delay
 
       // Force reflow so transition fires
       scienceTutorBox.offsetHeight;
