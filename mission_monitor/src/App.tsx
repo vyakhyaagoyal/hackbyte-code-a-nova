@@ -32,7 +32,7 @@ export default function App() {
 
       <iframe
         src={page}
-        title="BodhaSetu"
+        title="SelfSync"
         className="frame"
       />
 

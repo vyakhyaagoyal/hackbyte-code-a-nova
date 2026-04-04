@@ -3,7 +3,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BodhaSetu - Study Room</title>
+<title>SelfSync - AI Study Room</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -93,41 +93,41 @@
 <body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary min-h-screen overflow-hidden flex">
 <!-- Sidebar Navigation (JSON: SideNavBar) -->
 <aside class="fixed left-0 top-0 bottom-0 flex flex-col p-6 z-40 bg-slate-950/60 backdrop-blur-3xl h-[983px] m-4 rounded-[3rem] w-64 shadow-2xl shadow-sky-950/20">
-<div class="text-xl font-bold text-sky-400 mb-8 font-headline uppercase tracking-tight">BodhaSetu</div>
+<div class="text-xl font-bold text-sky-400 mb-8 font-headline uppercase tracking-tight">SelfSync</div>
 <nav class="flex-1 space-y-2">
-<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="#">
+<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="../bodhasetu_dashboard/code.html">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-label text-[10px] uppercase tracking-[0.05em]">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 bg-sky-500/20 text-sky-300 rounded-full px-6 py-3 border-l-4 border-sky-400 translate-x-1 duration-200" href="#">
+<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="../bodhasetu_ai_study_room/code.html">
 <span class="material-symbols-outlined">school</span>
 <span class="font-label text-[10px] uppercase tracking-[0.05em]">Study Room</span>
 </a>
-<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="#">
+<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="../bodhasetu_library/code.html">
 <span class="material-symbols-outlined">local_library</span>
 <span class="font-label text-[10px] uppercase tracking-[0.05em]">Library</span>
 </a>
-<a class="flex items-center gap-3 text-slate-500 px-6 py-3 hover:text-slate-200 transition-all rounded-full hover:bg-slate-800/40" href="#">
+<a class="flex items-center gap-3 bg-sky-500/20 text-sky-300 rounded-full px-6 py-3 border-l-4 border-sky-400 translate-x-1 duration-200" href="./code.html">
 <span class="material-symbols-outlined">center_focus_strong</span>
 <span class="font-label text-[10px] uppercase tracking-[0.05em]">Focus Mode</span>
 </a>
 </nav>
 <div class="mt-auto space-y-4">
-<button class="w-full py-3 bg-primary text-on-primary-fixed rounded-full font-label text-[10px] uppercase tracking-widest font-bold shadow-lg shadow-primary/20">
+<a class="w-full inline-flex justify-center py-3 bg-primary text-on-primary-fixed rounded-full font-label text-[10px] uppercase tracking-widest font-bold shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all" href="../bodhasetu_onboarding/code.html">
                 Upgrade to Pro
-            </button>
+            </a>
 <div class="flex flex-col gap-1 pt-4 border-t border-slate-800">
-<a class="flex items-center gap-3 text-slate-500 px-6 py-2 hover:text-slate-200 transition-all font-label text-[10px] uppercase tracking-[0.05em]" href="#">
+<a class="flex items-center gap-3 text-slate-500 px-6 py-2 hover:text-slate-200 transition-all font-label text-[10px] uppercase tracking-[0.05em]" href="../bodhasetu_dashboard/code.html">
 <span class="material-symbols-outlined">settings</span> Settings
                 </a>
-<a class="flex items-center gap-3 text-slate-500 px-6 py-2 hover:text-slate-200 transition-all font-label text-[10px] uppercase tracking-[0.05em]" href="#">
+<a class="flex items-center gap-3 text-slate-500 px-6 py-2 hover:text-slate-200 transition-all font-label text-[10px] uppercase tracking-[0.05em]" href="../bodhasetu_dashboard/code.html">
 <span class="material-symbols-outlined">help</span> Support
                 </a>
 </div>
 </div>
 </aside>
 <!-- Main Content Canvas -->
-<main class="flex-1 ml-72 p-8 relative flex flex-col h-screen overflow-hidden">
+<main class="flex-1 ml-72 p-8 relative flex flex-col h-screen overflow-x-hidden">
 <!-- Top App Bar (JSON: TopNavBar style) -->
 <header class="sticky top-0 z-50 flex justify-between items-center px-8 h-16 bg-slate-900/40 backdrop-blur-2xl rounded-full mb-8 shadow-[0_20px_100px_-10px_rgba(56,189,248,0.15)]">
 <div class="flex items-center gap-6">
@@ -286,8 +286,8 @@
 </div>
 </div>
 <div class="mt-4 relative">
-<input class="w-full bg-surface-container-lowest border-none rounded-full py-3 px-5 text-xs text-white focus:ring-1 focus:ring-primary placeholder:text-slate-600" placeholder="Ask AI..." type="text"/>
-<button class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-primary">
+<input id="chat-input" class="w-full bg-surface-container-lowest border-none rounded-full py-3 px-5 text-xs text-white focus:ring-1 focus:ring-primary placeholder:text-slate-600" placeholder="Ask AI..." type="text"/>
+<button id="send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-primary">
 <span class="material-symbols-outlined">send</span>
 </button>
 </div>
@@ -316,11 +316,11 @@
 </div>
 <!-- Footer (JSON: Footer) -->
 <footer class="max-w-7xl mx-auto flex flex-col items-center gap-4 mt-12 bg-transparent w-full py-12">
-<p class="font-space-grotesk text-xs tracking-widest text-slate-500">© 2024 BodhaSetu AI. Designed for the Luminous Void.</p>
+<p class="font-space-grotesk text-xs tracking-widest text-slate-500">© 2026 SelfSync AI. Designed for the Luminous Void.</p>
 <div class="flex gap-8">
-<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="#">Privacy</a>
-<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="#">Terms</a>
-<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="#">API Status</a>
+<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="../bodhasetu_landing_page/code.html">Privacy</a>
+<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="../bodhasetu_landing_page/code.html">Terms</a>
+<a class="font-space-grotesk text-xs tracking-widest text-slate-600 hover:text-white transition-colors" href="../bodhasetu_landing_page/code.html">API Status</a>
 </div>
 </footer>
 </main>
@@ -383,7 +383,53 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTimer();
   document.getElementById('pause-btn').addEventListener('click', pauseTimer);
   document.getElementById('refresh-btn').addEventListener('click', resetTimer);
-  // Auto start or something, but for now manual
+  // Sound selection
+  document.querySelectorAll('.sound-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.sound-btn').forEach(b => {
+        b.classList.remove('border-primary/20', 'text-primary', 'bg-surface-container-high', 'shadow-lg', 'shadow-primary/5');
+        b.classList.add('bg-slate-800/40', 'text-slate-400', 'text-slate-500');
+        b.querySelector('span.material-symbols-outlined').classList.remove('text-primary');
+        b.querySelector('span.material-symbols-outlined').classList.add('text-slate-400');
+        b.querySelector('span.font-label').classList.remove('text-primary');
+        b.querySelector('span.font-label').classList.add('text-slate-500');
+      });
+      btn.classList.add('border-primary/20', 'text-primary', 'bg-surface-container-high', 'shadow-lg', 'shadow-primary/5');
+      btn.querySelector('span.material-symbols-outlined').classList.remove('text-slate-400');
+      btn.querySelector('span.material-symbols-outlined').classList.add('text-primary');
+      btn.querySelector('span.font-label').classList.remove('text-slate-500');
+      btn.querySelector('span.font-label').classList.add('text-primary');
+    });
+  });
+
+  // Fullscreen toggle
+  document.getElementById('fullscreen-btn').addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.getElementById('upgrade-btn-focus').addEventListener('click', () => {
+    alert('Upgrade to Pro - Feature coming soon!');
+  });
+
+  document.getElementById('send-btn').addEventListener('click', () => {
+    const input = document.getElementById('chat-input');
+    const message = input.value.trim();
+    if (message) {
+      alert(`AI Response to: "${message}" - Feature coming soon!`);
+      input.value = '';
+    }
+  });
+
+  // Enter key for chat
+  document.getElementById('chat-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      document.getElementById('send-btn').click();
+    }
+  });
 });
 </script>
 </html>

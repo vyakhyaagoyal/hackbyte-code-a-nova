@@ -90,41 +90,41 @@
     }
   </style>
 </head>
-<body class="font-body selection:bg-primary/30 selection:text-primary min-h-screen flex overflow-hidden">
+<body class="font-body selection:bg-primary/30 selection:text-primary min-h-screen flex overflow-x-hidden">
 <!-- SideNavBar Component -->
 <aside class="fixed left-0 top-0 bottom-0 flex flex-col p-6 z-40 bg-slate-950/60 backdrop-blur-3xl h-[983px] m-4 rounded-[3rem] w-64 shadow-2xl shadow-sky-950/20">
 <div class="mb-8">
-<div class="text-xl font-bold text-sky-400 mb-2 font-headline tracking-tight">BodhaSetu</div>
+<div class="text-xl font-bold text-sky-400 mb-2 font-headline tracking-tight">SelfSync</div>
 <div class="font-label uppercase tracking-[0.05em] text-[10px] text-sky-400/60">AI Study Intelligence</div>
 </div>
 <nav class="flex-1 flex flex-col gap-2">
-<a class="flex items-center gap-4 bg-sky-500/20 text-sky-300 rounded-full px-6 py-3 border-l-4 border-sky-400 translate-x-1 duration-200" href="#">
+<a class="flex items-center gap-4 bg-sky-500/20 text-sky-300 rounded-full px-6 py-3 border-l-4 border-sky-400 translate-x-1 duration-200" href="./code.html">
 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="font-label uppercase tracking-[0.05em] text-[10px]">Dashboard</span>
 </a>
-<a class="flex items-center gap-4 text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all duration-200" href="#">
+<a class="flex items-center gap-4 text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all duration-200" href="../bodhasetu_ai_study_room/code.html">
 <span class="material-symbols-outlined" data-icon="school">school</span>
 <span class="font-label uppercase tracking-[0.05em] text-[10px]">Study Room</span>
 </a>
-<a class="flex items-center gap-4 text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all duration-200" href="#">
+<a class="flex items-center gap-4 text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all duration-200" href="../bodhasetu_library/code.html">
 <span class="material-symbols-outlined" data-icon="local_library">local_library</span>
 <span class="font-label uppercase tracking-[0.05em] text-[10px]">Library</span>
 </a>
-<a class="flex items-center gap-4 text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all duration-200" href="#">
+<a class="flex items-center gap-4 text-slate-500 px-6 py-3 hover:text-slate-200 hover:bg-slate-800/40 rounded-full transition-all duration-200" href="../bodhasetu_focus_mode/code.html">
 <span class="material-symbols-outlined" data-icon="center_focus_strong">center_focus_strong</span>
 <span class="font-label uppercase tracking-[0.05em] text-[10px]">Focus Mode</span>
 </a>
 </nav>
 <div class="mt-auto flex flex-col gap-4">
-<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed font-headline font-bold py-3 px-6 rounded-full shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all text-sm">
+<a class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed font-headline font-bold py-3 px-6 rounded-full shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all text-sm text-center" href="../bodhasetu_onboarding/code.html">
         Upgrade to Pro
-      </button>
+      </a>
 <div class="flex flex-col gap-1 border-t border-white/5 pt-4">
-<a class="flex items-center gap-4 text-slate-500 px-4 py-2 hover:text-white transition-colors" href="#">
+<a class="flex items-center gap-4 text-slate-500 px-4 py-2 hover:text-white transition-colors" href="../bodhasetu_dashboard/code.html">
 <span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
 <span class="font-label uppercase tracking-[0.05em] text-[10px]">Settings</span>
 </a>
-<a class="flex items-center gap-4 text-slate-500 px-4 py-2 hover:text-white transition-colors" href="#">
+<a class="flex items-center gap-4 text-slate-500 px-4 py-2 hover:text-white transition-colors" href="../bodhasetu_dashboard/code.html">
 <span class="material-symbols-outlined text-sm" data-icon="help">help</span>
 <span class="font-label uppercase tracking-[0.05em] text-[10px]">Support</span>
 </a>
@@ -239,7 +239,7 @@
 <section class="col-span-12 lg:col-span-8 row-span-2 glass-panel rounded-xl p-6 flex flex-col">
 <div class="flex justify-between items-center mb-6">
 <h3 class="font-label text-xs tracking-widest text-slate-500">AI RECOMMENDED SESSIONS</h3>
-<button class="text-primary text-xs font-bold hover:underline">View All</button>
+<button id="view-all-btn" class="text-primary text-xs font-bold hover:underline">View All</button>
 </div>
 <div class="space-y-3 flex-1 overflow-y-auto pr-2 custom-scrollbar">
 <div class="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group cursor-pointer border border-transparent hover:border-white/5">
@@ -287,16 +287,46 @@
 <!-- Footer Component -->
 <footer class="max-w-7xl mx-auto flex flex-col items-center gap-4 mt-20 pb-12">
 <div class="flex gap-8">
-<a class="text-slate-600 hover:text-white transition-colors font-label text-xs tracking-widest uppercase" href="#">Privacy</a>
-<a class="text-slate-600 hover:text-white transition-colors font-label text-xs tracking-widest uppercase" href="#">Terms</a>
-<a class="text-slate-600 hover:text-white transition-colors font-label text-xs tracking-widest uppercase" href="#">API Status</a>
+<a class="text-slate-600 hover:text-white transition-colors font-label text-xs tracking-widest uppercase" href="../bodhasetu_landing_page/code.html">Privacy</a>
+<a class="text-slate-600 hover:text-white transition-colors font-label text-xs tracking-widest uppercase" href="../bodhasetu_landing_page/code.html">Terms</a>
+<a class="text-slate-600 hover:text-white transition-colors font-label text-xs tracking-widest uppercase" href="../bodhasetu_landing_page/code.html">API Status</a>
 </div>
 <p class="font-label text-xs tracking-widest text-slate-500 opacity-80 hover:opacity-100 transition-opacity">
-        © 2024 BodhaSetu AI. Designed for the Luminous Void.
+        © 2026 SelfSync AI. Designed for the Luminous Void.
       </p>
 </footer>
 </main>
 <!-- Visual Flourishes -->
 <div class="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 <div class="fixed bottom-[-10%] left-[10%] w-[400px] h-[400px] bg-tertiary/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('search-input');
+  const timerBtn = document.getElementById('timer-btn');
+  const profileBtn = document.getElementById('profile-btn');
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.trim();
+    if (query) {
+      alert(`Searching for: "${query}" - Feature coming soon!`);
+    }
+  });
+
+  timerBtn.addEventListener('click', () => {
+    alert('Timer feature - Navigate to Focus Mode for full functionality');
+  });
+
+  profileBtn.addEventListener('click', () => {
+    alert('Profile settings - Feature coming soon!');
+  });
+
+  document.getElementById('upgrade-btn').addEventListener('click', () => {
+    alert('Upgrade to Pro - Feature coming soon!');
+  });
+
+  document.getElementById('view-all-btn').addEventListener('click', () => {
+    alert('Viewing all AI recommended sessions - Feature coming soon!');
+  });
+});
+</script>
 </body></html>
