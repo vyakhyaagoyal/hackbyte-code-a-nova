@@ -175,6 +175,26 @@
         #science-tutor-box.speaking {
             box-shadow: 0 0 20px #38bdf8;
         }
+
+        /* Speaking Animation (shared for all tiles) */
+        .speaking {
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.9);
+        }
+
+        .speaking::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            border: 2px solid #22c55e;
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 0.2; }
+            100% { opacity: 0.8; }
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden">
@@ -313,56 +333,119 @@ Start Session
   </section>
 
   <!-- Math Tutor -->
-  <section class="col-span-12 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
-    <img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="blurred blackboard covered in complex mathematical formulas and physics diagrams with a warm cinematic glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPeX8zo6wd2xJUzPsQ4L-73elzPvkYpyK3QeOYtjOBUcuOh7YIHr8qWRnPPzPIXCqGmYUgqL7IRMcqZvMVAY1GYLhJeD3L6fLTqHDeM9-5GhvU9i_rh7ynTzjp5bLehCJVVDenc7u4YOazstFNRWiOYHEgKfBvFk2Fhhoywv9JJ3ipwpKp6w3yAftbc7OLYZdCIDd6D6G1c35tJeh_BHd7LjQkbcaIDobpRNuTnfCnaViiFl6T87tzaDV109dRc1KTXMjY2ET_0wBP" />
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90"></div>
-    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
-      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
-        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-        <span class="font-headline font-bold text-white">Mr. Max (Math)</span>
-        <span class="font-label text-[10px] text-amber-300 bg-amber-500/10 px-2 rounded-full">SOLVING</span>
+  <section id="math-tutor-box"
+    class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-black group cursor-pointer">
+
+    <!-- VIDEO BACKGROUND -->
+    <!-- IDLE VIDEO (profile/side view) -->
+    <video id="idle-math-video" autoplay muted loop
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500">
+      <source src="/videos/maths.mp4" type="video/mp4" />
+    </video>
+
+    <!-- TALKING VIDEO (front-facing) -->
+    <video id="talking-math-video" muted loop
+      class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500">
+      <source src="/videos/maths_frontface.mp4" type="video/mp4" />
+    </video>
+
+    <!-- DARK OVERLAY -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- NAME BAR -->
+    <div class="absolute bottom-20 left-4 right-4 z-10">
+      <div class="flex items-center gap-2 bg-black/60 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+        <span class="text-white font-bold">Mr. Max (Math)</span>
+        <span class="text-xs text-yellow-300">SOLVING</span>
       </div>
     </div>
+
+    <!-- ELEVENLABS INSIDE TILE -->
+    <elevenlabs-convai
+      agent-id="agent_8301knaqca4mesw8tfn7k983xem2">
+    </elevenlabs-convai>
+
   </section>
 
-  <!-- History Tutor -->
-  <section class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
-    <img class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="ancient maps and historical artifacts lit by candlelight" src="http://googleusercontent.com/profile/picture/5" />
-    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950/90 via-transparent to-transparent"></div>
-    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
-      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py- rounded-full border border-white/10">
-        <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-        <span class="font-headline font-bold text-white">Professor Leo (History)</span>
-        <span class="font-label text-[10px] text-orange-300 bg-orange-500/10 px-2 rounded-full">TEACHING</span>
+  <!-- Astra Tutor -->
+  <section id="astra-tutor-box"
+    class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-black group cursor-pointer">
+
+    <!-- VIDEO BACKGROUND -->
+    <video autoplay muted loop
+      class="absolute inset-0 w-full h-full object-cover opacity-70">
+      <source src="/astra-video.mp4" type="video/mp4" />
+    </video>
+
+    <!-- DARK OVERLAY -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <!-- JOIN OVERLAY -->
+    <div id="astra-join-overlay"
+      class="absolute inset-0 bg-black/70 flex items-center justify-center z-30 hidden">
+      <div class="text-center">
+        <div class="w-12 h-12 border-4 border-purple-400 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-white text-sm">Astra is joining...</p>
       </div>
     </div>
+
+    <!-- NAME BAR -->
+    <div class="absolute bottom-20 left-4 right-4 z-10">
+      <div class="flex items-center gap-2 bg-black/60 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+        <span class="text-white font-bold">Astra</span>
+        <span id="astra-status"
+          class="text-xs text-yellow-300 bg-yellow-500/10 px-2 rounded-full">
+          CONNECTING
+        </span>
+      </div>
+    </div>
+
+    <!-- ELEVENLABS AGENT -->
+    <elevenlabs-convai
+      agent-id="agent_0601knde86dkfwtap1nskva82crb">
+    </elevenlabs-convai>
+
   </section>
 
   <!-- Geography Tutor -->
-  <section class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
-    <img class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="holographic earth globe with topographical data lines" src="http://googleusercontent.com/profile/picture/6" />
-    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950/90 via-transparent to-transparent"></div>
-    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
-      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
-        <span class="w-2 h-2 rounded-full bg-green-400"></span>
-        <span class="font-headline font-bold text-white">Geo Nova (Geography)</span>
-        <span class="font-label text-[10px] text-green-300 bg-green-500/10 px-2 rounded-full">EXPLORING</span>
+  <section id="geo-tutor-box"
+    class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-black group cursor-pointer">
+
+    <!-- VIDEO BACKGROUND -->
+    <!-- IDLE VIDEO (profile/side view) -->
+    <video id="idle-geo-video" autoplay muted loop
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500">
+      <source src="/videos/geo.mp4" type="video/mp4" />
+    </video>
+
+    <!-- TALKING VIDEO (front-facing) -->
+    <video id="talking-geo-video" muted loop
+      class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500">
+      <source src="/videos/geo_frontface.mp4" type="video/mp4" />
+    </video>
+
+    <!-- DARK OVERLAY -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- NAME BAR -->
+    <div class="absolute bottom-20 left-4 right-4 z-10">
+      <div class="flex items-center gap-2 bg-black/60 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+        <span class="text-white font-bold">Geo Nova (Geography)</span>
+        <span class="text-xs text-green-300">EXPLORING</span>
       </div>
     </div>
+
+    <!-- ELEVENLABS INSIDE TILE -->
+    <elevenlabs-convai
+      agent-id="agent_7801knax54qrfgs9sc52kndayxxv">
+    </elevenlabs-convai>
+
   </section>
 
-  <!-- Hindi Tutor -->
-  <section class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 relative overflow-hidden rounded-xl bg-surface-container-low group transition-all duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400" tabindex="0">
-    <img class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="traditional indian mandalas and script projected softly in warm lighting" src="http://googleusercontent.com/profile/picture/7" />
-    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950/90 via-transparent to-transparent"></div>
-    <div class="absolute inset-x-6 bottom-6 flex flex-col gap-3">
-      <div class="flex items-center gap-3 bg-slate-900/60 backdrop-blur-xl px-4 py-4 rounded-full border border-white/10">
-        <span class="w-2 h-2 rounded-full bg-pink-400"></span>
-        <span class="font-headline font-bold text-white">Kai (Hindi)</span>
-        <span class="font-label text-[10px] text-pink-300 bg-pink-500/10 px-2 rounded-full">LEARNING</span>
-      </div>
-    </div>
-  </section>
+  
 </div>
 <!-- Central Control Bar -->
 <section class="max-w-4xl mx-auto w-full glass-panel rounded-full p-4 flex items-center justify-between border border-white/10 shadow-2xl relative z-10">
@@ -517,6 +600,98 @@ window.ElevenLabsConvAI.start()
 fullscreenEndBtn
 .addEventListener("click", exitFullscreen)
 
+/* DEACTIVATE ALL - Prevent multiple AIs speaking */
+function deactivateAll() {
+  document.querySelectorAll("section[id$='-tutor-box']").forEach(sec => {
+    sec.classList.remove("speaking");
+  });
+}
+
+/* GEO LOGIC */
+const geoBox = document.getElementById("geo-tutor-box");
+const geoIdleVideo = document.getElementById("idle-geo-video");
+const geoTalkingVideo = document.getElementById("talking-geo-video");
+
+geoBox.addEventListener("click", async () => {
+
+  deactivateAll();
+  
+  // Switch to talking video
+  geoIdleVideo.style.opacity = "0";
+  geoTalkingVideo.style.opacity = "1";
+  
+  // speaking animation
+  geoBox.classList.add("speaking");
+
+  setTimeout(() => {
+    geoBox.classList.remove("speaking");
+    // Switch back to idle video
+    geoIdleVideo.style.opacity = "1";
+    geoTalkingVideo.style.opacity = "0";
+  }, 4000);
+
+  // trigger agent
+  const agent = geoBox.querySelector("elevenlabs-convai");
+  agent?.click();
+});
+
+/* MATH LOGIC */
+const mathBox = document.getElementById("math-tutor-box");
+const mathIdleVideo = document.getElementById("idle-math-video");
+const mathTalkingVideo = document.getElementById("talking-math-video");
+
+mathBox.addEventListener("click", async () => {
+
+  deactivateAll();
+  
+  // Switch to talking video
+  mathIdleVideo.style.opacity = "0";
+  mathTalkingVideo.style.opacity = "1";
+  
+  // speaking animation
+  mathBox.classList.add("speaking");
+
+  setTimeout(() => {
+    mathBox.classList.remove("speaking");
+    // Switch back to idle video
+    mathIdleVideo.style.opacity = "1";
+    mathTalkingVideo.style.opacity = "0";
+  }, 4000);
+
+  // trigger agent
+  const agent = mathBox.querySelector("elevenlabs-convai");
+  agent?.click();
+});
+
+/* ASTRA LOGIC */
+const astraBox = document.getElementById("astra-tutor-box");
+const astraOverlay = document.getElementById("astra-join-overlay");
+const astraStatus = document.getElementById("astra-status");
+
+astraBox.addEventListener("click", async () => {
+
+  // connecting
+  deactivateAll();
+  astraOverlay.classList.remove("hidden");
+  astraStatus.innerText = "CONNECTING";
+
+  await new Promise(res => setTimeout(res, 2000));
+
+  // live
+  astraOverlay.classList.add("hidden");
+  astraStatus.innerText = "LIVE";
+
+  // speaking animation
+  astraBox.classList.add("speaking");
+
+  setTimeout(() => {
+    astraBox.classList.remove("speaking");
+  }, 4000);
+
+  // trigger agent
+  const agent = astraBox.querySelector("elevenlabs-convai");
+  agent?.click();
+});
 
 })
 
