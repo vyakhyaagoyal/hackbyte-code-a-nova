@@ -36,14 +36,7 @@ export default function App() {
         className="frame"
       />
 
-      <h1>My Video</h1>
-      <video controls width="720" preload="metadata">
-        <source
-          src="https://res.cloudinary.com/dy2xqqfza/video/upload/v1775341916/WhatsApp_Video_2026-04-05_at_12.42.27_AM_ga8x99.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
+    
 
     </div>
   );

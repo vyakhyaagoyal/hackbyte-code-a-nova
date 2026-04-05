@@ -518,6 +518,34 @@ Reset
 Pomodoro: 25m focus • 5m break
 </div>
 
+<div class="mt-6 flex items-center gap-3">
+
+<button
+id="white-noise-toggle"
+class="px-4 py-2 bg-slate-700 rounded-lg text-sm">
+
+🔊 White Noise OFF
+
+</button>
+
+<span class="text-xs text-slate-400">
+Rain ambience
+</span>
+
+</div>
+
+<audio
+id="white-noise-audio"
+loop
+preload="auto"
+crossorigin="anonymous">
+
+<source
+src="https://cdn.jsdelivr.net/gh/anars/blank-audio/10-seconds-of-silence.mp3"
+type="audio/mp3">
+
+</audio>
+
 </section>
 
   
@@ -576,29 +604,26 @@ Pomodoro: 25m focus • 5m break
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* WHITE NOISE */
+    /* WHITE NOISE FIXED */
 
 const whiteNoiseBtn =
-document.getElementById(
-"white-noise-toggle"
-)
+document.getElementById("white-noise-toggle")
 
 const whiteNoiseAudio =
-document.getElementById(
-"white-noise-audio"
-)
+document.getElementById("white-noise-audio")
 
 let noiseOn = false
 
-whiteNoiseBtn.addEventListener(
-"click",
-()=>{
+whiteNoiseAudio.volume = 0.3
+
+whiteNoiseBtn.addEventListener("click", () => {
 
 noiseOn = !noiseOn
 
 if(noiseOn){
 
-whiteNoiseAudio.volume = 0.25
+whiteNoiseAudio.src =
+"https://assets.mixkit.co/active_storage/sfx/1196/1196-preview.mp3"
 
 whiteNoiseAudio.play()
 
@@ -610,9 +635,12 @@ whiteNoiseBtn.classList.add(
 "text-black"
 )
 
-}else{
+}
+else{
 
 whiteNoiseAudio.pause()
+
+whiteNoiseAudio.currentTime = 0
 
 whiteNoiseBtn.innerText =
 "🔊 White Noise OFF"
@@ -661,8 +689,6 @@ cameraFeed.src =
 })
 
 
-
-/* STOP SESSION */
 
 /* STOP SESSION */
 
@@ -971,32 +997,7 @@ updateDisplay()
 
 
 </script>
-<div class="mt-6 flex items-center gap-3">
-
-<button
-id="white-noise-toggle"
-class="px-4 py-2 bg-slate-700 rounded-lg text-sm">
-
-🔊 White Noise OFF
-
-</button>
-
-<span class="text-xs text-slate-400">
-Rain ambience
-</span>
-
-</div>
-
-<audio
-id="white-noise-audio"
-loop>
-
-<source
-src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=soft-rain-ambient-110624.mp3"
-type="audio/mp3">
-
-</audio>
 
 
-<button id="fullscreen-end-btn">⬛ End Session</button>
+<button id="fullscreen-end-btn">End Session</button>
 </body></html>
