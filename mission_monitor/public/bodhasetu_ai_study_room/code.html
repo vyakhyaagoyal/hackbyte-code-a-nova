@@ -261,16 +261,16 @@ Start Session
 <!-- Header / Status Bar -->
 <header class="flex justify-between items-center px-4">
 <div>
-<h1 class="font-headline text-3xl font-extrabold tracking-tight text-white mb-1">Session: Quantum Electrodynamics</h1>
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-white mb-1">Self Study Jam</h1>
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_10px_#4ee6aa]"></span>
-<span class="font-label text-xs uppercase tracking-widest text-slate-400">4 Active AI Intelligence Nodes</span>
+<span class="font-label text-xs uppercase tracking-widest text-slate-400">5 Active AI Intelligence Nodes</span>
 </div>
 </div>
 <div class="flex items-center gap-3">
-<div class="glass-panel px-4 py-2 rounded-full border border-white/5 text-xs font-label tracking-widest text-slate-300">
+<!-- <div class="glass-panel px-4 py-2 rounded-full border border-white/5 text-xs font-label tracking-widest text-slate-300">
                     DURATION: 42:15
-                </div>
+                </div> -->
 <button id="end-session-btn" class="bg-error/20 text-error hover:bg-error hover:text-on-error px-6 py-2 rounded-full font-bold text-sm transition-all">
   End Session
 </button>
@@ -445,6 +445,58 @@ Start Session
 
   </section>
 
+  <!-- Pomodoro Timer -->
+<section
+class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 
+glass-panel rounded-xl p-6 flex flex-col items-center justify-center
+border border-white/10 ai-glow">
+
+<h2 class="text-xl font-bold text-sky-300 mb-2">
+Focus Timer
+</h2>
+
+<div
+id="timer-display"
+class="text-5xl font-bold text-white mb-6 tracking-widest">
+
+25:00
+
+</div>
+
+<div class="flex gap-3">
+
+<button
+id="start-timer"
+class="px-4 py-2 bg-sky-500 text-black rounded-lg font-bold">
+
+Start
+
+</button>
+
+<button
+id="pause-timer"
+class="px-4 py-2 bg-slate-700 rounded-lg">
+
+Pause
+
+</button>
+
+<button
+id="reset-timer"
+class="px-4 py-2 bg-slate-700 rounded-lg">
+
+Reset
+
+</button>
+
+</div>
+
+<div class="text-xs text-slate-400 mt-4">
+Pomodoro: 25m focus • 5m break
+</div>
+
+</section>
+
   
 </div>
 <!-- Central Control Bar -->
@@ -539,11 +591,15 @@ cameraFeed.src =
 
 /* STOP SESSION */
 
-endBtn.addEventListener("click", () => {
+endBtn.addEventListener("click", async () => {
 
-fetch("http://localhost:5000/stop-session")
+await fetch(
+"http://localhost:5000/stop-session"
+)
 
 cameraFeed.src = ""
+
+location.reload()
 
 })
 
@@ -694,6 +750,106 @@ astraBox.addEventListener("click", async () => {
 });
 
 })
+/* POMODORO TIMER */
+
+let timer = 1500
+let timerInterval = null
+
+const display =
+document.getElementById("timer-display")
+
+const startTimer =
+document.getElementById("start-timer")
+
+const pauseTimer =
+document.getElementById("pause-timer")
+
+const resetTimer =
+document.getElementById("reset-timer")
+
+
+function updateDisplay(){
+
+let minutes =
+Math.floor(timer/60)
+
+let seconds =
+timer%60
+
+display.innerText =
+`${minutes}:${seconds
+.toString()
+.padStart(2,"0")}`
+
+}
+
+
+function startPomodoro(){
+
+if(timerInterval) return
+
+timerInterval =
+setInterval(()=>{
+
+timer--
+
+updateDisplay()
+
+if(timer<=0){
+
+clearInterval(timerInterval)
+
+alert("Break time!")
+
+timer=300
+
+updateDisplay()
+
+}
+
+},1000)
+
+}
+
+
+function pausePomodoro(){
+
+clearInterval(timerInterval)
+
+timerInterval=null
+
+}
+
+
+function resetPomodoro(){
+
+clearInterval(timerInterval)
+
+timerInterval=null
+
+timer=1500
+
+updateDisplay()
+
+}
+
+
+startTimer.addEventListener(
+"click",
+startPomodoro
+)
+
+pauseTimer.addEventListener(
+"click",
+pausePomodoro
+)
+
+resetTimer.addEventListener(
+"click",
+resetPomodoro
+)
+
+updateDisplay()
 
 </script>
 
