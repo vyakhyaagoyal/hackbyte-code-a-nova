@@ -76,3 +76,64 @@ All inside **one distraction-free interface**.
 ---
 
 ## 📁 Project Structure
+hackbyte-code-a-nova
+│
+├── frontend
+│ └── React + Vite UI
+│
+├── ml-api
+│ ├── model.py
+│ ├── server.py
+│ ├── session_report.pdf
+│
+├── public/videos
+│ └── AI tutor visuals
+│
+└── README.md
+
+
+---
+
+## ⚙️ How to Run
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/vyakhyaagoyal/hackbyte-code-a-nova.git
+
+cd hackbyte-code-a-nova
+2️⃣ Start ML Backend
+cd ml-api
+
+pip install flask flask-cors opencv-python mediapipe ultralytics reportlab numpy
+
+python server.py
+
+Runs on:
+
+http://localhost:5000
+3️⃣ Start Frontend
+cd frontend
+
+npm install
+
+npm run dev
+
+Runs on:
+
+http://localhost:5173
+4️⃣ Run Application
+Open browser → http://localhost:5173
+Click Start Session
+AI monitoring begins
+Click End Session
+PDF report downloads automatically
+🎯 Impact
+
+SelfSync AI helps students:
+
+improve focus
+reduce distractions
+build better study discipline
+understand productivity patterns
+receive personalized AI feedback
