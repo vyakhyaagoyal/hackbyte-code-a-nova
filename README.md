@@ -76,20 +76,20 @@ All inside **one distraction-free interface**.
 ---
 
 ## 📁 Project Structure
-hackbyte-code-a-nova
-│
-├── frontend
-│ └── React + Vite UI
-│
-├── ml-api
-│ ├── model.py
-│ ├── server.py
-│ ├── session_report.pdf
-│
-├── public/videos
-│ └── AI tutor visuals
-│
+
+```
+hackbyte-code-a-nova/
+├── frontend/
+│   └── React + Vite UI
+├── ml-api/
+│   ├── model.py
+│   └── server.py
+├── session_report.pdf
+├── public/
+│   └── videos/
+├── AI tutor visuals/
 └── README.md
+```
 
 
 ---
